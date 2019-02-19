@@ -1,0 +1,172 @@
+$tColor: #FF72BB;
+$ft1: 1px;
+$ft2: 2px;
+$bc: #F7F7F7;
+$fc:#fff;
+$fColor: #FF72BB;
+$mColor: #6BADFF;
+$yColor: #f7b939;
+@mixin fs($fs) {
+  @media screen and (max-width: 321px) {
+    font-size: $fs - $ft1
+  }
+  @media screen and (min-width:321px) and (max-width:400px) {
+    font-size: $fs
+  }
+  @media screen and (min-width:400px) {
+    font-size: $fs + $ft2
+  }
+}
+
+// 背景图片地址和大小
+@mixin bis($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin word {
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+//定位全屏
+@mixin allcover {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+//定位上下左右居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin ct {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin cl {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+  font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between) {
+  display: flex;
+  justify-content: $type;
+}
+
+//单行省略
+@mixin sl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//多行省略
+@mixin sll($number: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical; // 参考 https://github.com/postcss/autoprefixer/issues/776
+  /* autoprefixer: on */
+}
+
+
+
+
+
+
+
+/* 覆盖mint-ui的primary颜色，改为微信UI的绿色 */
+$color-primary: #2699EC;
+
+.mint-header {
+  background-color: $color-primary;
+}
+.mint-button:not(.is-disabled):active::after {
+    opacity: .2 /* .6 */
+}
+.mint-button--primary {
+    background-color: $color-primary;
+}
+.mint-button--primary.is-plain {
+    border: 1px solid $color-primary;
+    color: $color-primary
+}
+.mint-badge.is-primary {
+  background-color: $color-primary
+}
+.mint-switch-input:checked + .mint-switch-core {
+  border-color: $color-primary;
+  background-color: $color-primary;
+}
+.mint-navbar .mint-tab-item.is-selected {
+  border-bottom: 3px solid $color-primary;
+  color: $color-primary;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+  color: $color-primary;
+}
+.mint-searchbar-cancel {
+  color: $color-primary;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+.mint-radio-input:checked + .mint-radio-core {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+.mt-range-progress {
+  background-color: $color-primary;
+}
+.mt-progress-progress {
+  background-color: $color-primary;
+}
+.mint-msgbox-confirm {
+  color: $color-primary;
+}
+.mint-msgbox-confirm:active {
+  color: $color-primary;
+}
+.mint-datetime-action {
+  color: $color-primary;
+}
