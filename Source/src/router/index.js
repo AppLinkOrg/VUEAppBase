@@ -36,6 +36,16 @@ export default [{
       path: '/mintexample',
       name: 'mintexample',
       component: include('mintexample/mintexample'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: include('login/login'),
+    },
+    {
+      path: '/mobilelogin',
+      name: 'mobilelogin',
+      component: include('mobilelogin/mobilelogin'),
     }
   ]
 }]

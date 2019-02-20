@@ -44,7 +44,7 @@ export class AppBase {
     PageTitle: "",
     InstInfo: {},
     res: [],
-    MemberInfo: { },
+    MemberInfo: null,
     uploadpath:imgBaseUrl
   };
   static Resources = null;
@@ -85,14 +85,13 @@ export class AppBase {
     var token = window.localStorage.getItem("UserToken");
     //alert(token);
     if (token == null) {
-      this.MemberInfo = { photo:this.uploadpath+"inst/"+this.InstInfo.memberlogo };
+      this.MemberInfo = null;
       this.onMyShow();
     } else {
       this.post("member", "info",{}).then((memberinfo) => {
         if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
-          memberinfo = { photo:this.uploadpath+"inst/"+this.InstInfo.memberlogo };
+          memberinfo = null;
         }else{
-          memberinfo.photo=this.uploadpath+"member/"+this.memberinfo.photo;
         }
         this.MemberInfo=memberinfo;
         this.onMyShow();
@@ -151,7 +150,10 @@ export class AppBase {
         toast: base.toast,
         info: base.info,
         confirm: base.confirm,
-        post: base.post
+        post: base.post,
+        isLogin:base.isLogin,
+        push:base.push,
+        back:base.back
       },
       onMyLoad: base.onMyLoad,
       onMyShow: base.onMyShow,
@@ -206,5 +208,22 @@ export class AppBase {
     return MessageBox.confirm(message, "提示").then((action) => {
       return action == "confirm";
     });
+  }
+  isLogin(){
+    return this.MemberInfo!=null;
+  }
+  push(url,needlogin=false){
+    if(needlogin==false){
+      this.$router.push(url);
+    }else{
+      if(this.isLogin()==false){
+        this.push("/login");
+      }else{
+        this.$router.push(url);
+      }
+    }
+  }
+  back(level=-1){
+    this.$router.back(level);
   }
 }

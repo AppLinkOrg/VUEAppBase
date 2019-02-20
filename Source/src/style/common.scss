@@ -765,11 +765,23 @@ button[disabled][type=primary] {
 .height-150{
   height: $vpx150;
 }
-.margin-top-10{
+.margin-top-40{
+  margin-top:$vpx40;
+}
+.margin-top-30{
+  margin-top:$vpx30;
+}
+.margin-top-20{
   margin-top:$vpx20;
 }
-.margin-top-5{
+.margin-top{
+  margin-top:$vpx20;
+}
+.margin-top-10{
   margin-top:$vpx10;
+}
+.margin-top-5{
+  margin-top:$vpx5;
 }
 .margin-left-5{
   margin-left:$vpx5;
@@ -835,6 +847,10 @@ button[disabled][type=primary] {
   width: $vpx40;
   height: $vpx40;
 }
+.icon-20{
+  width: $vpx20;
+  height: $vpx20;
+}
 .icon-25{
   width: $vpx50;
   height: $vpx50;
@@ -868,4 +884,8 @@ button[disabled][type=primary] {
 }
 .line-height-0{
   line-height: 0;
+}
+
+.border-gray{
+  border:3px #c9c9c9 solid
 }
