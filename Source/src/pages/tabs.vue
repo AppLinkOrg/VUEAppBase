@@ -5,17 +5,11 @@
     </transition>
     <section id='foot_guide' class="border-top">
       <router-link to="/" class="guide_item" :class="isActived('home')?'actived':''" tag="div">
-        <svg class="icon_style" aria-hidden="true">
-          <use xlink:href="#home"></use>
-          <use class="file" xlink:href="#home-file"></use>
-        </svg>
+        <img class="icon_style" src="../assets/home.png" />
         <span>首页</span>
       </router-link>
       <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
-        <svg class="icon_style" aria-hidden="true">
-          <use xlink:href="#member"></use>
-          <use class="file" xlink:href="#member-file"></use>
-        </svg>
+        <img class="icon_style" src="../assets/member.png" />
         <span>我的</span>
       </router-link>
     </section>

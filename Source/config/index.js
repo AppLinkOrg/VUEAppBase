@@ -46,7 +46,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://cmsdev.app-link.org/alucard263096/mamau/api',
+        target: 'http://cmsdev.app-link.org/alucard263096/cdiaper/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

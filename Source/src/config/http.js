@@ -1,5 +1,4 @@
 import axios from 'axios'
-import store from '../store'
 import {
   baseUrl
 } from './env'
@@ -12,6 +11,7 @@ import {
   hex_md5
 } from '@/plugins/md5-min'
 
+let UNICODE="test";
 
 let cancel, promiseArr = {}
 
@@ -109,34 +109,15 @@ export const paramUrlencoded = (json) => {
 }
 
 export default {
-  //get请求
-  get(url, param) {
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'get',
-        url,
-        headers: {
-          'Content-Type': 'application/json;',
-          'Accept': 'application/json'
-        },
-        params: param,
-        cancelToken: new CancelToken(c => {
-          cancel = c
-        })
-      }).then(res => {
-        resolve(res.data)
-      })
-    })
-  },
   //post请求
   post(url, param) {
-
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          // 'headers': poststrFn(param)
+          'Content-Type': 'application/json;',
+          'Accept': 'application/json',
+          'UNICODE': UNICODE
         },
         url,
         data: param,
@@ -144,8 +125,12 @@ export default {
           cancel = c
         })
       }).then(res => {
+        var requestresult={
+          url,param,res,data:res.data
+        };
+        console.log(requestresult);
         resolve(res.data)
-      })
+      });
     })
   }
 }

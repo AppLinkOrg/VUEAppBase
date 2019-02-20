@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-header  fixed title="首页"></mt-header>
+    <mt-header  fixed :title="InstInfo.name"></mt-header>
     <div class="height-40"></div>
     <div class="padding">
       hello

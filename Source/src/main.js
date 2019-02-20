@@ -3,7 +3,6 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import routes from './router'
-import store from './store/'
 import './config/flexable'
 import FastClick from 'fastclick'
 import Calendar from 'vue-mobile-calendar'
@@ -25,14 +24,21 @@ import {
   Picker,
   Button,
   Navbar,
-  TabItem,
   Swipe,
   SwipeItem,
-  TabContainer,
-  TabContainerItem,
+  IndexList, IndexSection,
+  Progress,
   Popup,
   Indicator,
-  Toast
+  Toast,
+  Lazyload,
+  PaletteButton,
+  Header,
+  Tabbar, TabItem,
+  Cell,CellSwipe,
+  TabContainer, TabContainerItem,
+  Search,
+  Switch,Checklist,Radio,Field,Badge
 } from 'mint-ui'
 
 Vue.component(Actionsheet.name, Actionsheet)
@@ -40,15 +46,33 @@ Vue.component(DatetimePicker.name, DatetimePicker)
 Vue.component(Picker.name, Picker)
 Vue.component(Button.name, Button)
 Vue.component(Navbar.name, Navbar)
-Vue.component(TabItem.name, TabItem)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(TabContainer.name, TabContainer)
 Vue.component(TabContainerItem.name, TabContainerItem)
 Vue.component(Popup.name, Popup)
+Vue.component(Progress.name, Progress)
+Vue.component(IndexList.name, IndexList)
+Vue.component(IndexSection.name, IndexSection)
+Vue.component(PaletteButton.name, PaletteButton)
+Vue.component(Header.name, Header)
+Vue.component(Tabbar.name, Tabbar),
+Vue.component(TabItem.name, TabItem)
+Vue.component(Cell.name, Cell)
+Vue.component(CellSwipe.name, CellSwipe)
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
+Vue.component(Search.name, Search);
+Vue.component(Switch.name, Switch);
+Vue.component(Checklist.name, Checklist);
+Vue.component(Radio.name, Radio);
+Vue.component(Field.name, Field);
+Vue.component(Badge.name, Badge);
+
 
 Vue.use(VueVideoPlayer)
 Vue.use(Calendar)
+Vue.use(Lazyload);
 // Vue.use(InfiniteScroll)
 // Vue.config.productionTip = false
 Vue.prototype.Indicator = Indicator
@@ -79,27 +103,7 @@ const router = new VueRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
 
-  if (to.meta.getUser) {
-    store.dispatch('getUserInfo')
-  }
-
-  if (to.meta.requiresAuth) {
-    if (store.state.isLogin) {
-      next()
-    } else {
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    }
-  } else {
-    next()
-  }
-})
 
 
 // Wechat.isInstalled(function(installed) {
@@ -111,8 +115,7 @@ router.beforeEach((to, from, next) => {
 //document.addEventListener('deviceready', function() {
   //   window.open = cordova.InAppBrowser.open
   new Vue({
-    router,
-    store
+    router
   }).$mount('#app')
   //   navigator.splashscreen.hide()
 //}, false)

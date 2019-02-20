@@ -7,11 +7,11 @@
  *
  **/
 
-let fileUploadAPI = 'http://cmsdev.app-link.org/alucard263096/mamau/fileupload'
-let imgBaseUrl = 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mamau'
-let baseUrl = 'http://cmsdev.app-link.org/alucard263096/mamau/'
+let fileUploadAPI = 'http://cmsdev.app-link.org/alucard263096/cdiaper/fileupload'
+let imgBaseUrl = 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cdiaper/'
+let baseUrl = 'http://cmsdev.app-link.org/alucard263096/cdiaper/'
 if (process.env.NODE_ENV == 'development') {} else if (process.env.NODE_ENV == 'production') {
-  baseUrl = 'http://cmsdev.app-link.org/alucard263096/mamau/'
+  baseUrl = 'http://cmsdev.app-link.org/alucard263096/cdiaper/'
 }
 
 export {
