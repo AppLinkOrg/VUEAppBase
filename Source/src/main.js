@@ -104,8 +104,6 @@ const router = new VueRouter({
 })
 
 
-
-
 // Wechat.isInstalled(function(installed) {
 //   alert("Wechat installed: " + (installed ? "Yes" : "No"));
 // }, function(reason) {

@@ -25,10 +25,7 @@ export default [{
         },
         {
           path: '/member',
-          component: include('member/member'),
-          meta: {
-            getUser: true,
-          }
+          component: include('member/member')
         },
       ]
     },
@@ -46,6 +43,12 @@ export default [{
       path: '/mobilelogin',
       name: 'mobilelogin',
       component: include('mobilelogin/mobilelogin'),
+    },
+    {
+      path: '/forgetpassword',
+      name: 'forgetpassword',
+      component: include('forgetpassword/forgetpassword'),
+      meta: {keepAlive: false}
     }
   ]
 }]

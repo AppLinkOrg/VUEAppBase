@@ -45,7 +45,7 @@ export class AppBase {
     InstInfo: {},
     res: [],
     MemberInfo: null,
-    uploadpath:imgBaseUrl
+    uploadpath: imgBaseUrl
   };
   static Resources = null;
   static InstInfo = null;
@@ -88,12 +88,11 @@ export class AppBase {
       this.MemberInfo = null;
       this.onMyShow();
     } else {
-      this.post("member", "info",{}).then((memberinfo) => {
+      this.post("member", "info", {}).then((memberinfo) => {
         if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
           memberinfo = null;
-        }else{
-        }
-        this.MemberInfo=memberinfo;
+        } else {}
+        this.MemberInfo = memberinfo;
         this.onMyShow();
       });
     }
@@ -151,9 +150,10 @@ export class AppBase {
         info: base.info,
         confirm: base.confirm,
         post: base.post,
-        isLogin:base.isLogin,
-        push:base.push,
-        back:base.back
+        isLogin: base.isLogin,
+        push: base.push,
+        back: base.back,
+        store: base.store
       },
       onMyLoad: base.onMyLoad,
       onMyShow: base.onMyShow,
@@ -182,10 +182,10 @@ export class AppBase {
     this.onBaseShow();
   }
   beforeUpdate() {
-    console.log("beforeUpdate");
+    //console.log("beforeUpdate");
   }
   updated() {
-    console.log("updated");
+    //console.log("updated");
   }
   beforeDestory() {
     console.log("beforeDestory");
@@ -209,21 +209,31 @@ export class AppBase {
       return action == "confirm";
     });
   }
-  isLogin(){
-    return this.MemberInfo!=null;
+  isLogin() {
+    return this.MemberInfo != null;
   }
-  push(url,needlogin=false){
-    if(needlogin==false){
+  push(url, needlogin = false) {
+    if (needlogin == false) {
       this.$router.push(url);
-    }else{
-      if(this.isLogin()==false){
+    } else {
+      if (this.isLogin() == false) {
         this.push("/login");
-      }else{
+      } else {
         this.$router.push(url);
       }
     }
   }
-  back(level=-1){
+  back(level = -1) {
+
     this.$router.back(level);
+  }
+
+  store(name, key = null) {
+    if (key == null) {
+      return window.localStorage.getItem(name);
+    } else {
+      window.localStorage.setItem(name, key);
+      return "";
+    }
   }
 }

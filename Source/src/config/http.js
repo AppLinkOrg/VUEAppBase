@@ -23,11 +23,20 @@ axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 export default {
   //post请求
   post(url, param) {
+    
+    //param=querystring.parse(decodeURIComponent(param));
+    var vp=[];
+    for(let p in param){
+      vp.push(p+"="+decodeURIComponent(param[p]));
+    }
+    param=vp.join("&");
+    //alert(param);
+
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
         headers: {
-          'Content-Type': 'application/json;',
+          'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
           'UNICODE': UNICODE
         },

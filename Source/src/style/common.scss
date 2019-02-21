@@ -443,6 +443,8 @@ $vpx28:1.4rem;
 $vpx24:1.2rem;
 $vpx20:1rem;
 $vpx15:0.75rem;
+$vpx14:0.7rem;
+$vpx12:0.6rem;
 $vpx10:0.5rem;
 $vpx5:0.25rem;
 $vpx4:0.2rem;
@@ -598,6 +600,9 @@ overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内�
 }
 .h7{
   font-size: $vpx20 !important;
+}
+.h8{
+  font-size: $vpx12 !important;
 }
 .text-underline{
   text-decoration: underline;
