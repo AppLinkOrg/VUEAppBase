@@ -38,6 +38,7 @@ export default {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
+          'TOKEN':window.localStorage.getItem("UserToken"),
           'UNICODE': UNICODE
         },
         url,

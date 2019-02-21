@@ -14,6 +14,10 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+  
+  setData(data){
+    return data;
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();

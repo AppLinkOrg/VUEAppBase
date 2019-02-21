@@ -49,8 +49,13 @@ import { AppBase } from "../../app/AppBase";
 class Content extends AppBase {
   constructor() {
     super();
-    this.data.mobile = "";
-    this.data.password = "";
+  }
+  setData(data){
+      
+    data.mobile = "";
+    data.password = "";
+
+    return data;
   }
   onMyLoad(){
       var storemobile=this.store("lastloginmobile");

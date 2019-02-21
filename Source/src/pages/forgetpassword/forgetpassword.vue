@@ -11,7 +11,7 @@
         <div>
           <div class="flex-row flex-center">
             <div>
-              <img :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right">
+              <img @click="aa()" :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right">
             </div>
             <div class="flex-1">
               <mt-field
@@ -128,26 +128,22 @@ import { AppBase } from "../../app/AppBase";
 class Content extends AppBase {
   constructor() {
     super();
-    this.data.mobile = "";
-    this.data.password = "";
-    this.data.reminder = 0;
-    this.data.inverify = false;
-    this.data.c1 = "";
-    this.data.c2 = "";
-    this.data.c3 = "";
-    this.data.c4 = "";
-    this.data.infocus = "";
+    
   }
-  onMyLoad() {
-    // this.mobile = "";
-    // this.password = "";
-    // this.reminder = 0;
-    // this.inverify = false;
-    // this.c1 = "";
-    // this.c2 = "";
-    // this.c3 = "";
-    // this.c4 = "";
-    // this.infocus = "";
+  
+  setData(data){
+      
+    data.mobile = "";
+    data.password = "";
+    data.reminder = 0;
+    data.inverify = false;
+    data.c1 = "";
+    data.c2 = "";
+    data.c3 = "";
+    data.c4 = "";
+    data.infocus = "";
+
+    return data;
   }
   setInVerify() {
     this.sendVerifyCode();
@@ -234,6 +230,9 @@ class Content extends AppBase {
       }
     });
   }
+  aa(){
+      
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -243,6 +242,7 @@ body.methods.setC3Focus = content.setC3Focus;
 body.methods.setC4Focus = content.setC4Focus;
 body.methods.submitVerify = content.submitVerify;
 body.methods.sendVerifyCode = content.sendVerifyCode;
+body.methods.aa = content.aa;
 
 export default body;
 </script>

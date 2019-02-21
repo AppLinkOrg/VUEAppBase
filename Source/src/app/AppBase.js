@@ -40,13 +40,13 @@ import {
 
 export class AppBase {
 
-  data = {
-    PageTitle: "",
-    InstInfo: {},
-    res: [],
-    MemberInfo: null,
-    uploadpath: imgBaseUrl
-  };
+  // data = {
+  //   PageTitle: "",
+  //   InstInfo: {},
+  //   res: [],
+  //   MemberInfo: null,
+  //   uploadpath: imgBaseUrl
+  // };
   static Resources = null;
   static InstInfo = null;
   Page = null;
@@ -108,12 +108,22 @@ export class AppBase {
     });
   }
 
+  setData(data){
+    return data;
+  }
+
   generateBodyJson() {
     var base = this;
     return {
       Base: base,
-      data() {
-        return base.data;
+      data(){
+        return base.setData({
+          PageTitle: "",
+          InstInfo: {},
+          res: [],
+          MemberInfo: null,
+          uploadpath: imgBaseUrl
+        });
       },
       components: {
         "mt-actionsheet": Actionsheet,
@@ -153,7 +163,10 @@ export class AppBase {
         isLogin: base.isLogin,
         push: base.push,
         back: base.back,
-        store: base.store
+        store: base.store,
+        dataReturn:base.dataReturn,
+        dataReturnCallback:base.dataReturnCallback,
+        logout: base.logout
       },
       onMyLoad: base.onMyLoad,
       onMyShow: base.onMyShow,
@@ -212,6 +225,10 @@ export class AppBase {
   isLogin() {
     return this.MemberInfo != null;
   }
+  logout(){
+    this.MemberInfo=null;
+    window.localStorage.removeItem("UserToken");
+  }
   push(url, needlogin = false) {
     if (needlogin == false) {
       this.$router.push(url);
@@ -224,8 +241,7 @@ export class AppBase {
     }
   }
   back(level = -1) {
-
-    this.$router.back(level);
+    this.$router.go(level);
   }
 
   store(name, key = null) {
@@ -235,5 +251,11 @@ export class AppBase {
       window.localStorage.setItem(name, key);
       return "";
     }
+  }
+  dataReturn(data){
+    this.$emit("dataReturnCallback",data);
+  }
+  dataReturnCallback(retdata){
+    console.log(retdata);
   }
 }

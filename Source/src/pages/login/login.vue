@@ -9,7 +9,7 @@
         <mt-button type="primary" plain size="large" @click="push('/mobilelogin')">手机登录</mt-button>
       </div>
       <div class="margin-top-10">
-        <mt-button type="primary" plain size="large">注册</mt-button>
+        <mt-button type="primary" plain size="large" @click="push('/register')">注册</mt-button>
       </div>
     </div>
   </div>

@@ -47,8 +47,12 @@ export default [{
     {
       path: '/forgetpassword',
       name: 'forgetpassword',
-      component: include('forgetpassword/forgetpassword'),
-      meta: {keepAlive: false}
+      component: include('forgetpassword/forgetpassword')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: include('register/register')
     }
   ]
 }]
