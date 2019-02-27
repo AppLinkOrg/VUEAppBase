@@ -33,6 +33,9 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+
+  
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
