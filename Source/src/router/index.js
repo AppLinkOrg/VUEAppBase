@@ -30,9 +30,9 @@ export default [{
       ]
     },
     {
-      path: '/mintexample',
-      name: 'mintexample',
-      component: include('mintexample/mintexample'),
+      path: '/mobilelogin',
+      name: 'mobilelogin',
+      component: include('mobilelogin/mobilelogin'),
     },
     {
       path: '/login',

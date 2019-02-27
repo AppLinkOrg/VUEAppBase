@@ -8,6 +8,7 @@
     <div class="height-50"></div>
   </div>
 </template>
+
 <script>
 import { AppBase } from "../../app/AppBase";
 class Content extends AppBase {
@@ -15,6 +16,7 @@ class Content extends AppBase {
     super();
   }
 }
+
 var content = new Content();
 var body = content.generateBodyJson();
 

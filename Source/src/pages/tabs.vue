@@ -4,14 +4,28 @@
       <router-view></router-view>
     </transition>
     <section id='foot_guide' class="border-top">
+
       <router-link to="/" class="guide_item" :class="isActived('home')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/home.png" />
-        <span>首页</span>
+        <span>呵护</span>
       </router-link>
+
+      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
+        <img class="icon_style" src="../assets/member.png" />
+        <span>育儿圈</span>
+      </router-link>
+
+      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
+        <img class="icon_style" src="../assets/home.png" />
+        <span>资讯</span>
+      </router-link>
+
       <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/member.png" />
         <span>我的</span>
       </router-link>
+
+
     </section>
   </div>
 </template>

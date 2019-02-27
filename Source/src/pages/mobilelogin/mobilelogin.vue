@@ -1,47 +1,66 @@
 <template>
-  <div>
-    <mt-header fixed title="忘记密码">
+  <div class="white-block padding-20">
+    <!-- <mt-header fixed title="忘记密码">
       <router-link to="/" slot="left">
         <mt-button icon="back" @click="back()"></mt-button>
       </router-link>
-    </mt-header>
-    <div class="height-40"></div>
-    <div class="padding white-block">
+    </mt-header>-->
+    <!-- <div class="height-40"></div> -->
+    <div class="flex-row flex-center margin-top-20">
+      <div class="flex-1">
+        <img :src="uploadpath+'resource/'+res.mobile" class="icon-30">
+      </div>
+
+      <div class>新用户注册</div>
+    </div>
+
+    <div class="margin-top-40 margin-left-10">
+      <div class="txt-bold h7">欢迎使用尿不湿</div>
+    </div>
+
+    <div class="padding margin-top-20">
       <div>
         <div>
-          <div class="flex-row flex-center">
+          <div class="flex-row column">
+            <div>手机号</div>
             <div>
-              <img :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right">
-            </div>
-            <div class="flex-1">
               <mt-field placeholder="输入登录手机号" type="tel" v-model="mobile" :attr="{ maxlength: 11 }"></mt-field>
             </div>
           </div>
         </div>
-        <div>
-          <div class="flex-row flex-center">
-            <div>
-              <img :src="uploadpath+'resource/'+res.shuo" class="icon-20 margin-right">
-            </div>
-            <div class="flex-1">
+
+        <div class="margin-top-20">
+          <div class="flex-row column">
+            <div>密码</div>
+            <div class style="padding:0">
               <mt-field placeholder="输入登录密码" type="password" v-model="password"></mt-field>
             </div>
           </div>
         </div>
-        <div class="margin-top-10">
-          <div class="flex-row flex-center">
-            <div class="flex-1"></div>
-            <div class="h8 txt-gray" @click="push('forgetpassword')">忘记密码</div>
-          </div>
-        </div>
+
         <div class="hr"></div>
         <div class="margin-top-20">
           <mt-button size="large" type="primary" @click="trylogin()">登录</mt-button>
         </div>
-        <div class="height-40"></div>
+
+        <div class="margin-top-20">
+          <div class="flex-row flex-center">
+            <div class="flex-1 h8 txt-gray">验证码登录</div>
+            <div class="h8 txt-gray" @click="push('forgetpassword')">忘记密码</div>
+          </div>
+        </div>
+
+        <div class="margin-top-20">
+          <div class="flex-row flex-center">
+            <div class="txt-gray">———————</div>
+            <div class="h8 txt-gray flex-1 text-center" >第三方账号登录</div>
+            <div class="txt-gray">———————</div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-    <div class="height-50"></div>
   </div>
 </template>
 <script>
@@ -50,26 +69,28 @@ class Content extends AppBase {
   constructor() {
     super();
   }
-  setData(data){
-      
+  setData(data) {
     data.mobile = "";
     data.password = "";
 
     return data;
   }
-  onMyLoad(){
-      var storemobile=this.store("lastloginmobile");
-      //alert(storemobile);
-      this.mobile=storemobile;
+  onMyLoad() {
+    var storemobile = this.store("lastloginmobile");
+    //alert(storemobile);
+    this.mobile = storemobile;
   }
-  trylogin(){
-      this.post("member","login",{mobile:this.mobile,password:this.password}).then((ret)=>{
-      if(ret.code=="0"){
-        this.store("lastloginmobile",this.mobile);
-        this.store("UserToken",ret.return);
+  trylogin() {
+    this.post("member", "login", {
+      mobile: this.mobile,
+      password: this.password
+    }).then(ret => {
+      if (ret.code == "0") {
+        this.store("lastloginmobile", this.mobile);
+        this.store("UserToken", ret.return);
         this.toast("登录成功");
         this.back(-2);
-      }else{
+      } else {
         this.toast("手机号码或密码不正确");
       }
     });
@@ -77,7 +98,7 @@ class Content extends AppBase {
 }
 var content = new Content();
 var body = content.generateBodyJson();
-body.methods.trylogin=content.trylogin;
+body.methods.trylogin = content.trylogin;
 
 export default body;
 </script>

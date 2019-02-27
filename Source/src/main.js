@@ -8,6 +8,7 @@ import FastClick from 'fastclick'
 import Calendar from 'vue-mobile-calendar'
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
+import './assets/css/my-mint.scss'
 
 import 'mint-ui/lib/style.css'
 

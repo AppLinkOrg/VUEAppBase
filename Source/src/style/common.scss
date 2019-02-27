@@ -103,7 +103,7 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  background: #EAEAEA;
+  background: white;
   line-height: 1.2;
   color: #333;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Segoe UI", "PingFangSC", "Tahoma", "Microsoft YaHei", sans-serif;
@@ -472,6 +472,10 @@ $vpx4:0.2rem;
   align-items: center;
   flex-direction: column;
 }
+.column{
+  align-content: center;
+  flex-direction:column;
+}
 
 .flex-bottom {
   align-content: baseline;
@@ -627,13 +631,13 @@ button.button-hover{
   border-color: #2699EC;
 }
 
-button[type=primary]{
+ button[type=primary]{
   
-  background-color: #2699EC;
+  background-color: #FF4081 !important;
 }
 button.button-hover[type=primary]{
   
-  background-color: rgba(0, 162, 231, 0.856);
+  background-color: #FF4081 !important;
 }
 button[disabled][type=primary] {
   background-color: #999db4;
