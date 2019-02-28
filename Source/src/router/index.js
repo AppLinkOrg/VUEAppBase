@@ -27,6 +27,10 @@ export default [{
           path: '/member',
           component: include('member/member')
         },
+        {
+          path: '/mine',
+          component: include('mine/mine')
+        }
       ]
     },
     {
