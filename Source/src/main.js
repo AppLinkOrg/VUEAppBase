@@ -10,6 +10,7 @@ import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 import './assets/css/my-mint.scss'
 
+
 import 'mint-ui/lib/style.css'
 
 import echarts from 'echarts'

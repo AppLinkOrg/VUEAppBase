@@ -8,11 +8,13 @@
 
       <router-link to="/" class="guide_item" :class="isActived('home')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/one.png" />
+
         <span>呵护</span>
       </router-link>
 
       <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/two.png" />
+        
         <span>育儿圈</span>
       </router-link>
 

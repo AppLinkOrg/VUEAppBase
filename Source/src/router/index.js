@@ -39,6 +39,11 @@ export default [{
       component: include('mobilelogin/mobilelogin'),
     },
     {
+      path: '/mybaby',
+      name: 'mybaby',
+      component: include('mybaby/mybaby'),
+    },
+    {
       path: '/login',
       name: 'login',
       component: include('login/login'),
@@ -47,6 +52,11 @@ export default [{
       path: '/mobilelogin',
       name: 'mobilelogin',
       component: include('mobilelogin/mobilelogin'),
+    },
+    {
+      path: '/addbaby',
+      name: 'addbaby',
+      component: include('addbaby/addbaby'),
     },
     {
       path: '/forgetpassword',
