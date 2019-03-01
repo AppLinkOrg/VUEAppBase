@@ -24,8 +24,12 @@ export default [{
           component: include('home/home')
         },
         {
-          path: '/member',
-          component: include('member/member')
+          path: '/childcarering',
+          component: include('childcarering/childcarering')
+        },
+        {
+          path: '/Information',
+          component: include('Information/Information')
         },
         {
           path: '/mine',
@@ -67,6 +71,11 @@ export default [{
       path: '/register',
       name: 'register',
       component: include('register/register')
+    },
+    {
+      path: '/share',
+      name: 'share',
+      component: include('share/share')
     }
   ]
 }]

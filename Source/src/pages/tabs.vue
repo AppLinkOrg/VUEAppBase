@@ -12,13 +12,13 @@
         <span>呵护</span>
       </router-link>
 
-      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
+      <router-link to="/childcarering" class="guide_item" :class="isActived('childcarering')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/two.png" />
         
         <span>育儿圈</span>
       </router-link>
 
-      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
+      <router-link to="/Information" class="guide_item" :class="isActived('Information')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/three.png" />
         <span>资讯</span>
       </router-link>

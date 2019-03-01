@@ -1,9 +1,15 @@
+<style>
+body{
+  background: white !important;
+}
+</style>
+
 <template>
   <div>
-    <mt-header  fixed title="首页"></mt-header>
+    <mt-header  fixed title="首页" style="background-color:#FF4081"></mt-header>
     <div class="height-40"></div>
     <div class="padding">
-      hello
+      首页
     </div>
     <div class="height-50"></div>
   </div>
