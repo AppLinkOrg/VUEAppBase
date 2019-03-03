@@ -58,7 +58,7 @@
           </div>
 
           <div class="margin-top-10">
-            <mt-button type="primary" plain size="large" v-if="wechatInstalled==true" @click="checkLogin()">微信登录</mt-button>
+            <mt-button type="primary" plain size="large" v-if="wechatInstalled==true" @click="checkWechatAuth()">微信登录</mt-button>
           </div>
         </div>
 
@@ -110,10 +110,25 @@ class Content extends AppBase {
       }
     });
   }
+  checkWechatAuth(){
+    WechatMgr.authUserInfo((res)=>{
+      var code=res["code"];
+      this.post("member","wechatauth",{"oauthcode":code}).then((ret)=>{
+        if(ret.code==0){
+          this.store("UserToken", ret.return);
+          this.toast("登录成功");
+          this.back(-2);
+        }else{
+          this.pushParam("wxauthlogin",ret.return);
+        }
+      });
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.methods.trylogin = content.trylogin;
+body.methods.checkWechatAuth = content.checkWechatAuth;
 
 export default body;
 </script>

@@ -53,6 +53,11 @@ export default [{
       path: '/register',
       name: 'register',
       component: include('register/register')
+    },
+    {
+      path: '/wxauthlogin',
+      name: 'wxauthlogin',
+      component: include('wxauthlogin/wxauthlogin')
     }
   ]
 }]

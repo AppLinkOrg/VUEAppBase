@@ -15,7 +15,7 @@ let cancel, promiseArr = {}
 const CancelToken = axios.CancelToken
 
 axios.defaults.baseURL = baseUrl
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 100000
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 // axios.defaults.withCredentials = false
 
