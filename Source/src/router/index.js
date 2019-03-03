@@ -58,6 +58,36 @@ export default [{
       path: '/wxauthlogin',
       name: 'wxauthlogin',
       component: include('wxauthlogin/wxauthlogin')
+    },
+    {
+      path: '/share',
+      name: 'share',
+      component: include('share/share')
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: include('mine/mine')
+    },
+    {
+      path: '/addbaby',
+      name: 'addbaby',
+      component: include('addbaby/addbaby')
+    },
+    {
+      path: '/childcarering',
+      name: 'childcarering',
+      component: include('childcarering/childcarering')
+    },
+    {
+      path: '/Information',
+      name: 'Information',
+      component: include('Information/Information')
+    },
+    {
+      path: '/mybaby',
+      name: 'mybaby',
+      component: include('mybaby/mybaby')
     }
   ]
 }]
