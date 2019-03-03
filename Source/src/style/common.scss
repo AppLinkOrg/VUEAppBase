@@ -537,6 +537,10 @@ $vpx4:0.2rem;
 
   background: #FBC02D;
 }
+.bg-pink{
+
+  background: #fe87a7;
+}
 .white_primary{
   background: #2699EC;
   color: white;
@@ -569,6 +573,9 @@ $vpx4:0.2rem;
 } 
 .txt-green{
   color:darkgreen;
+}
+.txt-pink{
+  color:#FF4681;
 }
 .txt-orange{
   color:orange;
@@ -759,6 +766,12 @@ button[disabled][type=primary] {
 .margin-bottom-40{
   margin-bottom:$vpx40;
 }
+.height-20{
+  height: $vpx20;
+}
+.height-30{
+  height: $vpx30;
+}
 .height-40{
   height: $vpx40;
 }
@@ -852,13 +865,9 @@ button[disabled][type=primary] {
   width: $vpx30;
   height: $vpx30;
 }
-.icon{
+.icon-20{
   width: $vpx40;
   height: $vpx40;
-}
-.icon-20{
-  width: $vpx20;
-  height: $vpx20;
 }
 .icon-25{
   width: $vpx50;

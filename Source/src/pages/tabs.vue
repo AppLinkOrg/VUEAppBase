@@ -3,28 +3,30 @@
     <transition name="router-slid" mode="out-in">
       <router-view></router-view>
     </transition>
+
     <section id='foot_guide' class="border-top">
 
       <router-link to="/" class="guide_item" :class="isActived('home')?'actived':''" tag="div">
-        <img class="icon_style" src="../assets/home.png" />
+        <img class="icon_style" src="../assets/one.png" />
+
         <span>呵护</span>
       </router-link>
 
-      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
-        <img class="icon_style" src="../assets/member.png" />
+      <router-link to="/childcarering" class="guide_item" :class="isActived('childcarering')?'actived':''" tag="div">
+        <img class="icon_style" src="../assets/two.png" />
+        
         <span>育儿圈</span>
       </router-link>
 
-      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
-        <img class="icon_style" src="../assets/home.png" />
+      <router-link to="/Information" class="guide_item" :class="isActived('Information')?'actived':''" tag="div">
+        <img class="icon_style" src="../assets/three.png" />
         <span>资讯</span>
       </router-link>
 
-      <router-link to="/member" class="guide_item" :class="isActived('member')?'actived':''" tag="div">
+      <router-link to="/mine" class="guide_item" :class="isActived('mine')?'actived':''" tag="div">
         <img class="icon_style" src="../assets/member.png" />
         <span>我的</span>
       </router-link>
-
 
     </section>
   </div>
