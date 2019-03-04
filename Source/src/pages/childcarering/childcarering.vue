@@ -13,8 +13,9 @@
     <div class="padding">
       育儿圈
     </div>
-    <div class="height-50"></div>
 
+    <div class="height-50">
+    </div>
 
 <div class="share" @click="push('/share')">
       <img

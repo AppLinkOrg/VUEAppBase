@@ -27,6 +27,7 @@
 
   </div>
 </template>
+
 <script>
 import { AppBase } from "../../app/AppBase";
 class Content extends AppBase {

@@ -11,6 +11,16 @@ import 'video.js/dist/video-js.css'
 import './assets/css/my-mint.scss'
 
 
+
+import vueWaterfallEasy from 'vue-waterfall-easy'
+export default {
+  name: 'app',
+  components: {
+    vueWaterfallEasy
+  }
+}
+
+
 import 'mint-ui/lib/style.css'
 
 import echarts from 'echarts'

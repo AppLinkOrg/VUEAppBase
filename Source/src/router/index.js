@@ -73,6 +73,11 @@ export default [{
       component: include('register/register')
     },
     {
+      path: '/momentdetails',
+      name: 'momentdetails',
+      component: include('momentdetails/momentdetails')
+    },
+    {
       path: '/share',
       name: 'share',
       component: include('share/share')
