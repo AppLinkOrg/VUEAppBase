@@ -31,6 +31,7 @@ body {
         <div class="txt-bold">大白兔奶糖</div>
         <div class="txt-gray margin-top-5">2019年19月19日 19:19</div>
       </div>
+      
 
       <img
         :src="uploadpath+'resource/'+res.icon2"
