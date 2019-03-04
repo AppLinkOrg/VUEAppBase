@@ -20,6 +20,7 @@
 
     <div class="padding margin-top-20">
       <div>
+        
         <div>
           <div class="flex-row column">
             <div>手机号</div>
@@ -39,6 +40,7 @@
         </div>
 
         <div class="hr"></div>
+        
         <div class="margin-top-20">
           <mt-button size="large" type="primary" @click="trylogin()">登录</mt-button>
         </div>
@@ -54,7 +56,7 @@
           <div class="flex-row flex-center">
             <div class="txt-gray">———————</div>
             <div class="h8 txt-gray flex-1 text-center" >第三方账号登录</div>
-            <div class="txt-gray">———————</div>
+            <div class="txt-gray">————————</div>
           </div>
 
           <div class="margin-top-10">

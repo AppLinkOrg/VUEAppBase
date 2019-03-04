@@ -17,6 +17,7 @@ body{
 
 <script>
 import { AppBase } from "../../app/AppBase";
+
 class Content extends AppBase {
   constructor() {
     super();
