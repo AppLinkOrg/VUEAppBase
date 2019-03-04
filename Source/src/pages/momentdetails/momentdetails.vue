@@ -43,7 +43,7 @@ body {
     <div class="padding-10 h8 txt-bold">按时大撒大撒大撒大撒大盛大的苏打大苏打按时大苏打啊实打实大苏打</div>
 
     <div class="padding-10 h8" style="border-bottom:1px solid #e5e5e5" ref="wrapper">
-        
+      
       <img :src="uploadpath+'resource/'+res.icon2" class="icon-30 bg-gray margin-right-5" style>
       <img :src="uploadpath+'resource/'+res.icon2" class="icon-30 bg-gray margin-right-5" style>
       <img :src="uploadpath+'resource/'+res.icon2" class="icon-30 bg-gray margin-right-5" style>
@@ -66,7 +66,7 @@ body {
       </div>
     </div>
 
-    <textarea class="bg-green pinlun txt-white" aria-placeholder="txt-white" style="height:40px;max-height:100px;"  placeholder="说两句"></textarea>
+    <textarea class="bg-green pinlun txt-white"  style="height:40px;max-height:100px;"  placeholder="说两句"></textarea>
 
   </div>
 </template>
