@@ -122,10 +122,17 @@ const router = new VueRouter({
 //   alert("Failed: " + reason);
 // });
 
-//document.addEventListener('deviceready', function() {
+document.addEventListener('deviceready', function() {
   //   window.open = cordova.InAppBrowser.open
+  window.Wechat=Wechat;
   new Vue({
     router
   }).$mount('#app')
-  //   navigator.splashscreen.hide()
-//}, false)
+  //  navigator.splashscreen.hide()
+}, false)
+
+// window.Wechat=undefined;
+
+//   new Vue({
+//     router
+//   }).$mount('#app');

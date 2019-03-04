@@ -24,28 +24,15 @@ export default [{
           component: include('home/home')
         },
         {
-          path: '/childcarering',
-          component: include('childcarering/childcarering')
+          path: '/member',
+          component: include('member/member')
         },
-        {
-          path: '/Information',
-          component: include('Information/Information')
-        },
-        {
-          path: '/mine',
-          component: include('mine/mine')
-        }
       ]
     },
     {
       path: '/mobilelogin',
       name: 'mobilelogin',
       component: include('mobilelogin/mobilelogin'),
-    },
-    {
-      path: '/mybaby',
-      name: 'mybaby',
-      component: include('mybaby/mybaby'),
     },
     {
       path: '/login',
@@ -58,11 +45,6 @@ export default [{
       component: include('mobilelogin/mobilelogin'),
     },
     {
-      path: '/addbaby',
-      name: 'addbaby',
-      component: include('addbaby/addbaby'),
-    },
-    {
       path: '/forgetpassword',
       name: 'forgetpassword',
       component: include('forgetpassword/forgetpassword')
@@ -73,14 +55,39 @@ export default [{
       component: include('register/register')
     },
     {
-      path: '/momentdetails',
-      name: 'momentdetails',
-      component: include('momentdetails/momentdetails')
+      path: '/wxauthlogin',
+      name: 'wxauthlogin',
+      component: include('wxauthlogin/wxauthlogin')
     },
     {
       path: '/share',
       name: 'share',
       component: include('share/share')
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: include('mine/mine')
+    },
+    {
+      path: '/addbaby',
+      name: 'addbaby',
+      component: include('addbaby/addbaby')
+    },
+    {
+      path: '/childcarering',
+      name: 'childcarering',
+      component: include('childcarering/childcarering')
+    },
+    {
+      path: '/Information',
+      name: 'Information',
+      component: include('Information/Information')
+    },
+    {
+      path: '/mybaby',
+      name: 'mybaby',
+      component: include('mybaby/mybaby')
     }
   ]
 }]

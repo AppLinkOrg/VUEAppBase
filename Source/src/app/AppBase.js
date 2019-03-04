@@ -49,6 +49,7 @@ export class AppBase {
   // };
   static Resources = null;
   static InstInfo = null;
+  Params={};
   Page = null;
   title = "aa";
   constructor(page) {
@@ -57,7 +58,8 @@ export class AppBase {
 
 
   onBaseLoad(options) {
-    console.log("onBaseLoad");
+    console.log("onBaseLoad:param");
+    console.log(this.$route.params);
     this.onMyLoad();
   }
   onMyLoad(options) {
@@ -162,6 +164,7 @@ export class AppBase {
         post: base.post,
         isLogin: base.isLogin,
         push: base.push,
+        pushParam: base.pushParam,
         back: base.back,
         store: base.store,
         dataReturn:base.dataReturn,
@@ -237,6 +240,19 @@ export class AppBase {
         this.push("/login");
       } else {
         this.$router.push(url);
+      }
+    }
+  }
+  pushParam(name,param, needlogin = false) {
+    console.log("go to push param");
+    console.log(param);
+    if (needlogin == false) {
+      this.$router.push({ name: name, params: param});
+    } else {
+      if (this.isLogin() == false) {
+        this.push("/login");
+      } else {
+        this.$router.push({ name: name, params: param});
       }
     }
   }
