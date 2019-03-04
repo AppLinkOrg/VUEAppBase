@@ -7,6 +7,7 @@ import {
   fileUploadAPI
 } from '../config/env'
 import http from '@/config/http'
+import CameraMgr from '../plugins/CameraMgr'
 import {
   Actionsheet,
   DatetimePicker,
@@ -169,7 +170,8 @@ export class AppBase {
         store: base.store,
         dataReturn:base.dataReturn,
         dataReturnCallback:base.dataReturnCallback,
-        logout: base.logout
+        logout: base.logout,
+        takePhoto: base.takePhoto
       },
       onMyLoad: base.onMyLoad,
       onMyShow: base.onMyShow,
@@ -273,5 +275,9 @@ export class AppBase {
   }
   dataReturnCallback(retdata){
     console.log(retdata);
+  }
+  takePhoto(success,fail){
+    alert(0);
+    CameraMgr.getPicture(success,fail);
   }
 }
