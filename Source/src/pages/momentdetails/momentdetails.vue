@@ -32,7 +32,6 @@ body {
         <div class="txt-gray margin-top-5">2019年19月19日 19:19</div>
       </div>
       
-
       <img
         :src="uploadpath+'resource/'+res.icon2"
         class="radius-50 icon-15 bg-gray margin-right-10"
