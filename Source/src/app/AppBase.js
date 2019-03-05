@@ -5,9 +5,11 @@ import {
   baseUrl,
   imgBaseUrl,
   fileUploadAPI
-} from '../config/env'
-import http from '@/config/http'
-import CameraMgr from '../plugins/CameraMgr'
+} from '../config/env';
+import http from '@/config/http';
+import { PhotoMgr } from '@/plugins/PhotoMgr';
+import { FileMgr } from '@/plugins/FileMgr';
+
 import {
   Actionsheet,
   DatetimePicker,
@@ -171,7 +173,9 @@ export class AppBase {
         dataReturn:base.dataReturn,
         dataReturnCallback:base.dataReturnCallback,
         logout: base.logout,
-        takePhoto: base.takePhoto
+        takePhoto: base.takePhoto,
+        choosePhoto: base.choosePhoto,
+        uploadFile: base.uploadFile
       },
       onMyLoad: base.onMyLoad,
       onMyShow: base.onMyShow,
@@ -276,8 +280,74 @@ export class AppBase {
   dataReturnCallback(retdata){
     console.log(retdata);
   }
-  takePhoto(success,fail){
-    alert(0);
-    CameraMgr.getPicture(success,fail);
+  //拍照
+  takePhoto(success){
+    PhotoMgr.takePhoto(success,(e)=>{
+      console.log("take photo fail");
+      console.log(e);
+    });
   }
+  //获取手机图片
+  choosePhoto(success){
+    PhotoMgr.getPicture(success,(e)=>{
+      console.log("get photo fail");
+      console.log(e);
+    });
+  }
+  
+  uploadFile(  filepath, module,callback,allcompletecallback=undefined) {
+    var filearr=[];
+    if(Array.isArray(filepath)){
+      filearr=filepath;
+    }else{
+      filearr.push(filepath);
+    }
+    var uploadapi=fileUploadAPI + "?field=img&module=" + module;
+    Indicator.open({
+      text: '上传中',
+      spinnerType: 'fading-circle'
+    });
+    var all=filearr.length;
+    var rets=[];
+    var count=0;
+    for(var f of filearr){
+      FileMgr.Upload(f,uploadapi,(data)=>{
+        console.log(data);
+        count++;
+        var ret=data.response.toString().split("|~~|")[1];
+        rets.push(ret);
+        if(count>=all){
+          Indicator.close();
+          if(allcompletecallback!=undefined){
+            allcompletecallback(rets);
+          }
+        }
+        if(callback!=undefined){
+          callback(ret);
+        }
+      },(uploadfile)=>{
+        count++;
+        if(count>=all){
+          Indicator.close();
+        }
+      });
+    }
+  }
+
+  //   let options: FileUploadOptions = {
+  //       fileKey: 'img'
+  //   }
+
+
+  //   var fileTransfer: FileTransferObject = transfer.create();
+  //   return fileTransfer.upload(filepath, ApiConfig.getFileUploadAPI() + "?field=img&module=" + module, options)
+  //       .then((data) => {
+  //           // success
+  //           //alert(data);
+  //           return data.response.toString().split("|~~|")[1];
+  //       }, (err) => {
+  //           alert("upload faile");
+  //           // error
+  //       })
+  // }
 }

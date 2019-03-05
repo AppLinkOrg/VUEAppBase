@@ -12,13 +12,6 @@ import './assets/css/my-mint.scss'
 
 
 
-import vueWaterfallEasy from 'vue-waterfall-easy'
-export default {
-  name: 'app',
-  components: {
-    vueWaterfallEasy
-  }
-}
 
 
 import 'mint-ui/lib/style.css'
