@@ -25,6 +25,7 @@ export default  [{
           component: include('home/home')
         },
         {
+<<<<<<< HEAD
           path: '/childcarering',
           component: include('childcarering/childcarering')
         },
@@ -33,6 +34,8 @@ export default  [{
           component: include('Information/Information')
         },
         {
+=======
+>>>>>>> 4c129e21ea5464223b2f6c771d39627f09d7b77f
           path: '/mine',
           component: include('mine/mine')
         },

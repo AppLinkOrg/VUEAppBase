@@ -114,6 +114,7 @@ const router = new VueRouter({
 // }, function(reason) {
 //   alert("Failed: " + reason);
 // });
+<<<<<<< HEAD
 var backfirst=0;
 document.addEventListener('deviceready', function() {
   //   window.open = cordova.InAppBrowser.open
@@ -151,4 +152,20 @@ window.Wechat=undefined;
 
   new Vue({
     router
+=======
+
+// document.addEventListener('deviceready', function() {
+//   //   window.open = cordova.InAppBrowser.open
+//   window.Wechat=Wechat;
+//   new Vue({
+//     router
+//   }).$mount('#app')
+//   //  navigator.splashscreen.hide()
+// }, false)
+
+ window.Wechat=undefined;
+
+   new Vue({
+     router
+>>>>>>> 4c129e21ea5464223b2f6c771d39627f09d7b77f
   }).$mount('#app');
