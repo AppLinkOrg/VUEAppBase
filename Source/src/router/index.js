@@ -24,8 +24,8 @@ export default [{
           component: include('home/home')
         },
         {
-          path: '/member',
-          component: include('member/member')
+          path: '/mine',
+          component: include('mine/mine')
         },
       ]
     },
