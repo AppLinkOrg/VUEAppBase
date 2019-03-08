@@ -25,6 +25,7 @@ export default  [{
           component: include('home/home')
         },
         {
+
           path: '/childcarering',
           component: include('childcarering/childcarering')
         },
@@ -33,6 +34,7 @@ export default  [{
           component: include('Information/Information')
         },
         {
+
           path: '/mine',
           component: include('mine/mine')
         },
@@ -52,11 +54,6 @@ export default  [{
       path: '/infminfo',
       name: 'infminfo',
       component: include('infminfo/infminfo'),
-    },
-    {
-      path: '/momentdetails',
-      name: 'momentdetails',
-      component: include('momentdetails/momentdetails'),
     },
     {
       path: '/mobilelogin',
