@@ -66,7 +66,7 @@ body {
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
 
-        <div class="flex-row flex-center padding-10" @click="push('/mybaby')">
+        <div class="flex-row flex-center padding-10" @click="push('/mybaby',false)">
           <img
             :src="uploadpath+'resource/'+res.mybaby"
             class="icon-15 margin-left-10"

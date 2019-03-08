@@ -163,7 +163,7 @@ document.addEventListener('deviceready', function() {
 // //   //  navigator.splashscreen.hide()
 // // }, false)
 
-//  window.Wechat=undefined;
-//    new Vue({
-//      router
-//   }).$mount('#app');
+ window.Wechat=undefined;
+   new Vue({
+     router
+  }).$mount('#app');
