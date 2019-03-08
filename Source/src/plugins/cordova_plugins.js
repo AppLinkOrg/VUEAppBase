@@ -37,6 +37,7 @@ export const _Camera = {
     }
 
   },
+  
   choosePictures: function() {
     console.log(ImagePicker)
     ImagePicker.getPictures(function(result) {

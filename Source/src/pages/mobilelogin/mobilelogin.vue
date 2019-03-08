@@ -96,7 +96,6 @@ class Content extends AppBase {
   }
 
 
-
   trylogin() {
     this.post("member", "login", {
       mobile: this.mobile,
@@ -112,6 +111,7 @@ class Content extends AppBase {
       }
     });
   }
+
   checkWechatAuth(){
     WechatMgr.authUserInfo((res)=>{
       var code=res["code"];
@@ -126,6 +126,7 @@ class Content extends AppBase {
       });
     });
   }
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();

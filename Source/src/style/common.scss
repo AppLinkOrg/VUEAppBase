@@ -428,6 +428,9 @@ a {
 
 
 $vpx200:10rem;
+$vpx180:9rem;
+$vpx170:8.5rem;
+$vpx160:8rem;
 $vpx150:7.5rem;
 $vpx120:6rem;
 $vpx100:5rem;
@@ -892,6 +895,18 @@ button[disabled][type=primary] {
 .icon-75{
   width: $vpx150;
   height: $vpx150;
+}
+.icon-80{
+  width: $vpx160;
+  height: $vpx160;
+}
+.icon-85{
+  width: $vpx170;
+  height: $vpx170;
+}
+.icon-90{
+  width: $vpx180;
+  height: $vpx180;
 }
 .icon-100{
   width: $vpx200;

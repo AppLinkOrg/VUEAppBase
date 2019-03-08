@@ -12,6 +12,7 @@ body {
 
 <template>
   <div>
+
     <div class="height-40">
       <mt-header title="详情" style="background-color:#FF4081" fixed>
         <router-link to="/childcarering" slot="left">
@@ -53,7 +54,8 @@ body {
     <div class="padding-10 txt-bold">评论(0):</div>
 
     <div class="flex-row padding-left-10 padding-right-10">
-      <img :src="uploadpath+'resource/'+res.icon2" class="icon-20 bg-gray" style>
+
+      <img :src="uploadpath+'resource/'+res.icon2" class="icon-20 bg-gray flex-1" style>
 
       <div class="flex-row column margin-left-10" style>
         <div class="flex-row column flex-1">
@@ -82,6 +84,5 @@ class Content extends AppBase {
 
 var content = new Content();
 var body = content.generateBodyJson();
-
 export default body;
 </script>

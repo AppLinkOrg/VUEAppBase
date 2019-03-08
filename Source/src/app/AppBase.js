@@ -78,7 +78,8 @@ export class AppBase {
     } else {
       this.InstInfo = AppBase.InstInfo;
     }
-    if (AppBase.Resources == null) {
+
+    if (1==1||AppBase.Resources == null) {
       this.post("inst", "resources", {}).then((resources) => {
         this.res = resources;
         AppBase.Resources = resources;
@@ -101,6 +102,9 @@ export class AppBase {
         this.onMyShow();
       });
     }
+
+    
+
   }
 
   onMyShow() {
@@ -350,4 +354,5 @@ export class AppBase {
   //           // error
   //       })
   // }
+
 }

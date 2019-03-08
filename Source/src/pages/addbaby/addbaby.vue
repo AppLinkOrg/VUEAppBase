@@ -23,6 +23,7 @@
         class="icon-30 bg-white"
         style="border:2px solid white;border-radius:50%"
       >
+
       <div class="margin-top-10">添加头像</div>
 
       <div class="height-30"></div>
@@ -31,6 +32,7 @@
         <img :src="uploadpath+'resource/'+res.icon4" class="icon-10">
         <input class="margin-left-5" style="width:260px;height:30px" placeholder="请输入宝贝名字">
       </div>
+
 
       <div class="height-20"></div>
 
@@ -53,9 +55,11 @@
         <input class="margin-left-5" style="width:260px;height:30px" placeholder="请填写与宝贝关系">
       </div>
 
+
       <div class="margin-top-30 btn">
           <mt-button  class="" style="width:290px;height:40px" type="primary">添加</mt-button>
       </div>
+
     </div>
     
 
