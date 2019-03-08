@@ -24,14 +24,6 @@ export default [{
           component: include('home/home')
         },
         {
-          path: '/childcarering',
-          component: include('childcarering/childcarering')
-        },
-        {
-          path: '/Information',
-          component: include('Information/Information')
-        },
-        {
           path: '/mine',
           component: include('mine/mine')
         },
