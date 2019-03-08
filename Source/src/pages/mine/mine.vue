@@ -21,11 +21,11 @@ body {
         <div class="flex-row flex-column ">
           <div class="height-30"></div>
           <img
-            :src="uploadpath+'resource/'+res.icon4"
+            :src="uploadpath+'member/'+MemberInfo.photo"
             class="icon-30 bg-white"
             style="border:2px solid white;border-radius:50%"
           >
-          <div class="margin-top-20 txt-bold">那年他穿8号</div>
+          <div class="margin-top-20 txt-bold h7">{{MemberInfo.name}}</div>
           <div class="height-40"></div>
         </div>
 
@@ -33,7 +33,7 @@ body {
       </div>
 
       <div class="bg-white">
-        <div class="flex-row flex-center padding-10">
+        <!-- <div class="flex-row flex-center padding-10">
           <img
             :src="uploadpath+'resource/'+res.Personalcenter"
             class="icon-15 margin-left-10"
@@ -43,7 +43,7 @@ body {
           <div class="margin-left-10 txt-bold">个人中心</div>
         </div>
           
-        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
+        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div> -->
 
         <div class="flex-row flex-center padding-10">
           <img
@@ -88,10 +88,14 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+
+
+
 }
 
 var content = new Content();
 var body = content.generateBodyJson();
+
 export default body;
 </script>
 

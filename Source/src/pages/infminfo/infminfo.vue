@@ -66,7 +66,7 @@ class Content extends AppBase {
   onMyLoad() {
     this.canshu = this.$route.params.id;
     this.newinfo();
-     this.newslist();
+    this.newslist();
      
   }
   newinfo() {
