@@ -15,8 +15,9 @@ body{
       <mt-button @click="getPhoto()">获取相册</mt-button>
     </div>
     <div class="padding">
-      <mt-button @click="takeP()">拍照</mt-button>
+      <mt-button @click="takeP()">拍照{{photo}}</mt-button>
     </div>
+    
     <div class="padding">
       <img :src="photo" style="width:50%" />
     </div>

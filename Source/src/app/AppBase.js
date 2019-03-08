@@ -294,7 +294,9 @@ export class AppBase {
   }
   //获取手机图片
   choosePhoto(success){
+    
     PhotoMgr.getPicture(success,(e)=>{
+      
       console.log("get photo fail");
       console.log(e);
     });

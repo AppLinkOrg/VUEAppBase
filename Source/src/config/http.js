@@ -51,6 +51,7 @@ export default {
           url,param,res,data:res.data
         };
         console.log(requestresult);
+        console.log(res.data);
         resolve(res.data)
       }).catch((response) => {
         console.log('请求失败')
