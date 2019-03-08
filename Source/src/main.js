@@ -114,6 +114,43 @@ const router = new VueRouter({
 // }, function(reason) {
 //   alert("Failed: " + reason);
 // });
+var backfirst=0;
+document.addEventListener('deviceready', function() {
+  //   window.open = cordova.InAppBrowser.open
+  window.Wechat=Wechat;
+  new Vue({
+    router
+  }).$mount('#app');
+  document.addEventListener("backbutton", ()=>{
+    console.log(navigator.app);
+    var url=window.location.href;
+    url=url.split("/");
+    var pagename=url[url.length-1];
+    if(pagename=="home"
+    ||pagename=="mine"){
+      backfirst++;
+      if(backfirst==2){
+        navigator.app.exitApp();
+      }else{
+        console.log("再次点击返回退出应用");
+        setTimeout(()=>{
+          backfirst=0;
+        },1000);
+        Toast({message:"再次点击返回退出应用",
+        position: 'bottom',
+        duration: 1000});
+      }
+    }else{
+      window.history.go(-1);
+    }
+  }, false);
+  //  navigator.splashscreen.hide()
+}, false)
+
+window.Wechat=undefined;
+
+  new Vue({
+    router})
 
 // document.addEventListener('deviceready', function() {
 //   //   window.open = cordova.InAppBrowser.open
@@ -125,7 +162,6 @@ const router = new VueRouter({
 // }, false)
 
  window.Wechat=undefined;
-
    new Vue({
      router
   }).$mount('#app');

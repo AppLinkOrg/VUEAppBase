@@ -6,7 +6,8 @@ const include = (name) => {
 
 let lock = false
 
-export default [{
+export default  [{
+  
   path: '/',
   component: App,
   children: [{
@@ -22,6 +23,14 @@ export default [{
       children: [{
           path: '/home',
           component: include('home/home')
+        },
+        {
+          path: '/childcarering',
+          component: include('childcarering/childcarering')
+        },
+        {
+          path: '/Information',
+          component: include('Information/Information')
         },
         {
           path: '/mine',
@@ -40,9 +49,14 @@ export default [{
       component: include('login/login'),
     },
     {
-      path: '/momentdetails',
-      name: 'momentdetails',
-      component: include('momentdetails/momentdetails'),
+      path: '/infminfo',
+      name: 'infminfo',
+      component: include('infminfo/infminfo'),
+    },
+    {
+      path: '/mobilelogin',
+      name: 'mobilelogin',
+      component: include('mobilelogin/mobilelogin'),
     },
     {
       path: '/forgetpassword',
