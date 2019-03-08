@@ -8,7 +8,11 @@ export class PhotoMgr {
   static takePhoto(onSuccess, onFail) {
     navigator.camera.getPicture(onSuccess, onFail, {
       destinationType: Camera.DestinationType.FILE_URI,
-      sourceType: Camera.PictureSourceType.CAMERA
+      sourceType: Camera.PictureSourceType.CAMERA,
+      encodingType: Camera.EncodingType.JPEG,
+      mediaType: Camera.MediaType.PICTURE,
+      allowEdit: true,
+      correctOrientation: true
     });
   }
 }

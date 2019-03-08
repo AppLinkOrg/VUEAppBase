@@ -124,8 +124,8 @@ const router = new VueRouter({
 //   //  navigator.splashscreen.hide()
 // }, false)
 
-window.Wechat=undefined;
+ window.Wechat=undefined;
 
-  new Vue({
-    router
+   new Vue({
+     router
   }).$mount('#app');
