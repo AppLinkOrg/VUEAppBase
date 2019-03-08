@@ -65,6 +65,8 @@ export class AppBase {
     console.log(this.$route.params);
     this.onMyLoad();
   }
+
+  
   onMyLoad(options) {
     console.log("onMyLoad");
   }
@@ -252,6 +254,8 @@ export class AppBase {
   pushParam(name,param, needlogin = false) {
     console.log("go to push param");
     console.log(param);
+    console.log(name);
+    console.log(this.$router);
     if (needlogin == false) {
       this.$router.push({ name: name, params: param});
     } else {
@@ -282,6 +286,7 @@ export class AppBase {
   }
   //拍照
   takePhoto(success){
+   
     PhotoMgr.takePhoto(success,(e)=>{
       console.log("take photo fail");
       console.log(e);

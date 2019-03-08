@@ -37,6 +37,7 @@ class Content extends AppBase {
     super();
   }
   takeP(){
+    console.log(this);
     this.takePhoto((src)=>{
       this.photo=src;
     });
