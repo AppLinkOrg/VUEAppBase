@@ -1,7 +1,7 @@
 
 <style>
 body {
-  background: #eeeeee;
+  background: #eeeeee ;
 }
 .bg {
   position: fixed;

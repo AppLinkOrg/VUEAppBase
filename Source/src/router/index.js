@@ -61,6 +61,11 @@ export default  [{
       component: include('mobilelogin/mobilelogin'),
     },
     {
+      path: '/momentdetails',
+      name: 'momentdetails',
+      component: include('momentdetails/momentdetails'),
+    },
+    {
       path: '/forgetpassword',
       name: 'forgetpassword',
       component: include('forgetpassword/forgetpassword')
