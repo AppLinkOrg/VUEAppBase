@@ -4,7 +4,7 @@
 
 
 
-    <div class="padding-20 primary-block" @click="push('/memberinfo',true)">
+    <div class="padding-20 primary-block" @click="push('/memberinfo')">
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
         <div>

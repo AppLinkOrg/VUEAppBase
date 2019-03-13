@@ -1,7 +1,7 @@
 <template >
   <div>
     
-    <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:160px;">
+    <img :src="uploadpath+'resource/'+res.zixunbj" class style="width:100%;height:160px;">
     <div  class="margin-10 flex-row flex-center"  >
       <div class="flex-1 txt-black txt-bold h7">育儿推荐</div>
       <div>
@@ -56,7 +56,7 @@
         <img :src="uploadpath+'news/'+item.cover" class="tuijiantu" style="width:100%;height:68px;">
       </div>
       <div class="flex-2 margin-left-20">
-        <div>{{item.title}}</div>
+        <div class="buhuanhan">{{item.title}}</div>
         <div class="flex-row flex-center margin-top-20">
           <div class="flex-1">{{item.ref}}</div>
           <div>{{item.viewcount}}阅读</div>

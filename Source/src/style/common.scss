@@ -428,6 +428,9 @@ a {
 
 
 $vpx200:10rem;
+$vpx180:9rem;
+$vpx170:8.5rem;
+$vpx160:8rem;
 $vpx150:7.5rem;
 $vpx120:6rem;
 $vpx100:5rem;
@@ -442,6 +445,7 @@ $vpx30:1.5rem;
 $vpx28:1.4rem;
 $vpx24:1.2rem;
 $vpx20:1rem;
+$vpx16:0.8rem;
 $vpx15:0.75rem;
 $vpx14:0.7rem;
 $vpx12:0.6rem;
@@ -612,7 +616,9 @@ overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内�
 .h7{
   font-size: $vpx20 !important;
 }
-
+.h7-5{
+  font-size: $vpx16 !important;
+}
 .h8{
   font-size: $vpx12 !important;
 }
@@ -893,6 +899,18 @@ button[disabled][type=primary] {
 .icon-75{
   width: $vpx150;
   height: $vpx150;
+}
+.icon-80{
+  width: $vpx160;
+  height: $vpx160;
+}
+.icon-85{
+  width: $vpx170;
+  height: $vpx170;
+}
+.icon-90{
+  width: $vpx180;
+  height: $vpx180;
 }
 .icon-100{
   width: $vpx200;

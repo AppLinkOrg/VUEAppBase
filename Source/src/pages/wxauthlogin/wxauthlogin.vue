@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-header fixed title="绑定手机">
+    <mt-header type="primary" style="background-color:#FF4081"  fixed title="绑定手机">
       <router-link to="/" slot="left">
         <mt-button icon="back" @click="back()"></mt-button>
       </router-link>
