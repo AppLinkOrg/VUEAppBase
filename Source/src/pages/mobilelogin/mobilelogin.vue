@@ -11,7 +11,7 @@
         <img :src="uploadpath+'resource/'+res.mobile" class="icon-30">
       </div>
 
-      <div class>新用户注册</div>
+      <div @click="push('/register')" class>新用户注册</div>
     </div>
 
     <div class="margin-top-40 margin-left-10">
@@ -20,7 +20,6 @@
 
     <div class="padding margin-top-20">
       <div>
-        
         <div>
           <div class="flex-row column">
             <div>手机号</div>
@@ -38,7 +37,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="hr"></div>
         
         <div class="margin-top-20">
@@ -47,20 +46,23 @@
 
         <div class="margin-top-20">
           <div class="flex-row flex-center">
-            <div class="flex-1 h8 txt-gray">验证码登录</div>
-            <div class="h8 txt-gray" @click="push('forgetpassword')">忘记密码</div>
+            <div class="flex-1"></div> 
+            <div class="h8 txt-gray" @click="push('forgetpassword')">忘记密码?</div>
           </div>
         </div>
 
-        <div class="margin-top-20">
+        <div  v-if="wechatInstalled!=true" class="margin-top-20" >
           <div class="flex-row flex-center">
             <div class="txt-gray">———————</div>
             <div class="h8 txt-gray flex-1 text-center" >第三方账号登录</div>
             <div class="txt-gray">————————</div>
           </div>
 
-          <div class="margin-top-10">
-            <mt-button type="primary" plain size="large" v-if="wechatInstalled==true" @click="checkWechatAuth()">微信登录</mt-button>
+          <!-- v-if="wechatInstalled==true" -->
+
+          <div class="margin-top-10 flex-row flex-column">
+            <!-- <img :src="uploadpath+'resource/'+res.mobile" class="icon-30"> -->
+            <img :src="uploadpath+'resource/'+res.wechat" class="icon-20" type="primary" plain size="large"  @click="checkWechatAuth()">
           </div>
         </div>
 
@@ -69,6 +71,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { AppBase } from "../../app/AppBase";
 import { WechatMgr } from "../../plugins/WechatMgr";
@@ -77,24 +80,22 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+
   setData(data) {
     data.mobile = "";
     data.password = "";
     data.wechatInstalled = false;
-
     return data;
   }
+
   onMyLoad() {
     var storemobile = this.store("lastloginmobile");
     //alert(storemobile);
     this.mobile = storemobile;
-
-
     WechatMgr.checkInstalled((isinstall)=>{
       this.wechatInstalled=isinstall;
     });
   }
-
 
   trylogin() {
     this.post("member", "login", {
@@ -126,7 +127,7 @@ class Content extends AppBase {
       });
     });
   }
-  
+
 }
 var content = new Content();
 var body = content.generateBodyJson();

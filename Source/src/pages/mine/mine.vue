@@ -13,19 +13,23 @@ body {
 <template>
   <div>
     <div class="bg">
-      <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:30%;">
-      <div class="bg-gray" style="width:100%;height:700px;"></div>
+      <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:300px;">
+      <!-- <div class="bg-gray" style="width:100%;height:700px;"></div> -->
     </div>
     <div style="z-index:1;position:fixed;width:100%">
       <div class="padding">
         <div class="flex-row flex-column ">
           <div class="height-30"></div>
-          <img
+          <!-- <img
             :src="uploadpath+'member/'+MemberInfo.photo"
             class="icon-30 bg-white"
             style="border:2px solid white;border-radius:50%"
-          >
-          <div class="margin-top-20 txt-bold h7">{{MemberInfo.name}}</div>
+          > -->
+          
+          <!-- <div class="margin-top-20 txt-bold h7">{{MemberInfo.name}}</div> -->
+          
+        <div v-if="MemberInfo!=null" class="margin-top-20 txt-bold h7">{{MemberInfo.name}}</div>
+        <div v-if="MemberInfo==null" class="margin-top-20 txt-bold h7">请点击登录</div>
           <div class="height-40"></div>
         </div>
 
