@@ -10,6 +10,7 @@ body {
   z-index: 0;
 }
 </style>
+
 <template>
   <div>
     <div class="bg">
@@ -49,7 +50,7 @@ body {
           
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div> -->
 
-        <div class="flex-row flex-center padding-10">
+        <div class="flex-row flex-center padding-10"  @click="push('/setting')">
           <img
             :src="uploadpath+'resource/'+res.setting"
             class="icon-15 margin-left-10"

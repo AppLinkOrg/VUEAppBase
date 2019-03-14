@@ -116,6 +116,11 @@ export default  [{
       component: include('Bluetooth/Bluetooth')
     },
     {
+      path: '/setting',
+      name: 'setting',
+      component: include('setting/setting')
+    },
+    {
       path: '/mybaby',
       name: 'mybaby',
       component: include('mybaby/mybaby')
