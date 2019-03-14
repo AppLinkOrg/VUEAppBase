@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-header fixed title="手机登录">
+    <mt-header fixed title="忘记密码" style="background-color:#FF4081">
       <router-link to="/" slot="left">
         <mt-button icon="back" @click="back()"></mt-button>
       </router-link>

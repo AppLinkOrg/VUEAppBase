@@ -12,7 +12,7 @@ export default  [{
   component: App,
   children: [{
       path: '',
-      redirect: '/tabs'
+      redirect: '/home'
     },
     {
       path: '/tabs',
@@ -104,6 +104,16 @@ export default  [{
       path: '/Information',
       name: 'Information',
       component: include('Information/Information')
+    },
+    {
+      path: '/realtimedata',
+      name: 'realtimedata',
+      component: include('realtimedata/realtimedata')
+    },
+    {
+      path: '/Bluetooth',
+      name: 'Bluetooth',
+      component: include('Bluetooth/Bluetooth')
     },
     {
       path: '/mybaby',

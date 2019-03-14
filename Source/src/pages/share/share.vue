@@ -9,9 +9,7 @@
 <template>
   <div>
 
-    <div class="flex-row flex-column">
-    <mt-button class="btn" style="width:290px;height:40px" type="primary" @click="submit">添加</mt-button>
-    </div>
+    
     <div class="height-40">
       <mt-header title="分享" style="background-color:#FF4081" fixed>
         <router-link to="/childcarering" slot="left">
@@ -26,6 +24,7 @@
         :src="photo" 
         class=""
         style="height:90px;width:110px;"
+        v-show="photo!=''"
       >
       
       <img
@@ -41,7 +40,11 @@
 
     </div>
     <textarea class=" padding-10 h7 txt-bold" @input="text" style="width:100%;min-height:400px;" placeholder="在此记录下宝贝的心情、趣事、欢乐等等..."></textarea>
+    <div class="flex-row flex-column">
+    <mt-button class="btn" style="width:290px;height:40px" type="primary" @click="submit">添加</mt-button>
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -53,21 +56,24 @@ class Content extends AppBase {
   
   setData(data) {
     data.inputValue = "";
+    data.photo="";
+    data.afphoto="";
     return data;
   }
   
   onMyLoad() {
 
-    this.tklist();
-    this.text(e);
-    this.submit();
+   
 
+  }
+  onMyShow(){
+ 
+    
+    
   }
 
   upload(){
-    this.uploadFile(this.photo,"member",(filename)=>{
-      this.afphoto=filename;
-    })
+   
   }
 
   text(e){
@@ -82,9 +88,18 @@ class Content extends AppBase {
   }
   
   submit(){
-    this.post("moments", "addbabycle", {summary:this.inputValue,status:"A"}).then(ret => {
+ this.uploadFile(this.photo,"baby",(filename)=>{
+  
+    this.post("moments", "addbabycle", {summary:this.inputValue,status:"A",imgs:filename}).then(ret => {
+      this.back(-1);
       this.talklist = ret;
     });
+
+     
+      
+    })
+
+   
   }
 
 }

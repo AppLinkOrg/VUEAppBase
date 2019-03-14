@@ -1,14 +1,17 @@
 <template>
   <div>
-    <mt-header fixed title="手机登录">
-      <router-link to="/" slot="left">
-        <mt-button icon="back" @click="back()"></mt-button>
-      </router-link>
+    <mt-header fixed title="用户注册" style="background-color:#FF4081">
+      <div to="/" slot="left">
+        <mt-button v-if="show==1" icon="back" @click="back()"></mt-button>
+        <mt-button v-if="show==2" icon="back" @click="nextthree()"></mt-button>
+        <mt-button v-if="show==3" icon="back" @click="nextone()"></mt-button>
+      </div>
     </mt-header>
     <div class="height-40"></div>
     <div class="padding white-block">
       <div>
-        <div>
+
+        <div v-if="show==1">
           <div class="flex-row flex-center">
             <div>
               <img  :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right">
@@ -24,7 +27,8 @@
             </div>
           </div>
         </div>
-        <div>
+
+        <div v-if="show==2">
           <div class="flex-row flex-center">
             <div>
               <img  :src="uploadpath+'resource/'+res.name" class="icon-20 margin-right">
@@ -40,7 +44,8 @@
             </div>
           </div>
         </div>
-        <div>
+
+        <div v-if="show==3">
           <div class="flex-row flex-center">
             <div>
               <img :src="uploadpath+'resource/'+res.shuo" class="icon-20 margin-right">
@@ -55,14 +60,36 @@
             </div>
           </div>
         </div>
+
         <div class="hr"></div>
         <div class="margin-top-20" v-if="inverify==false">
+
           <mt-button
+          v-if="show==1"
+            size="large"
+            type="primary"
+            :disabled="mobile.length!=11"
+            @click="nextone()"
+          >下一步</mt-button>
+
+          <mt-button
+          v-if="show==2"
+            size="large"
+            type="primary"
+            :disabled="name.trim()==''"
+            @click="setInVerify()"
+          >下一步</mt-button>
+
+          <mt-button
+          v-if="show==3"
             size="large"
             type="primary"
             :disabled="mobile.length!=11||name.trim()==''||password.length<6"
             @click="setInVerify()"
           >下一步</mt-button>
+
+
+
         </div>
         <div class="margin-top-20" v-if="inverify==true">
           <div class="h8 txt-gray">
@@ -159,6 +186,7 @@ class Content extends AppBase {
     data.c3 = "";
     data.c4 = "";
     data.infocus = "";
+    data.show=1
 
     return data;
   }
@@ -249,6 +277,18 @@ class Content extends AppBase {
       }
     });
   }
+  nextone(){
+    this.show=2;
+    console.log(this.show);
+  }
+  nexttwo(){
+    this.show=3;
+    console.log(this.show);
+  }
+  nextthree(){
+    this.show=1;
+    console.log(this.show);
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -258,7 +298,9 @@ body.methods.setC3Focus = content.setC3Focus;
 body.methods.setC4Focus = content.setC4Focus;
 body.methods.submitRegister = content.submitRegister;
 body.methods.sendVerifyCode = content.sendVerifyCode;
-
+body.methods.nextone = content.nextone;
+body.methods.nexttwo = content.nexttwo;
+body.methods.nextthree = content.nextthree;
 export default body;
 </script>
 <style scoped>

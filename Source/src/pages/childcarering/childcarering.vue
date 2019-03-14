@@ -36,6 +36,7 @@
           class="padding-5 margin-top-10"
           style="width:100%;"
           v-for="(item, index) in momentlist"
+          v-show="item.id%2!=0"
           :key="index"
           @click="pushParam('momentdetails',{id:item.id})"
         >
@@ -65,48 +66,34 @@
           class="flex-row flex-column padding-5 margin-top-10"
           style="width:100%;min-height:100px;"
         >
+        
+        </div>
+
+        <div  v-for="(item, index) in momentlist"
+          :key="index"
+           v-show="item.id%2==0"
+          @click="pushParam('momentdetails',{id:item.id})"  class="flex-row flex-column padding-5" >
           <div class="radius-5" style>
-            <img :src="uploadpath+'resource/'+res.icon2 " class="img" style>
+           <img :src="uploadpath+'baby/'+item.imgs" class="img" style>
             <div class="bg-gray padding-10 under">
-              <div class="txt-bold">宝宝心情不佳的说法大事发生发撒啊撒打发</div>
+              <div class="txt-bold">{{item.summary}}</div>
               <div class="flex-row flex-center under margin-top-5">
-                <img
-                  :src="uploadpath+'resource/'+res.icon2"
+               <img
+                  :src="uploadpath+'member/'+item.member_photo"
                   class="bg-gray icon-20 radius-50"
                   style
                 >
 
-                <div class="txt-bold flex-1">sss</div>
+               <div class="txt-bold flex-1 margin-left-5">{{item.member_name}}</div>
 
                 <img :src="uploadpath+'resource/'+res.dianzan" class="icon-10 margin-top-5" style>
 
-                <div class="margin-top-10 margin-left-5">20</div>
+                <div class="margin-top-10 margin-left-5">{{item.count}}</div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="flex-row flex-column padding-5" style="width:100%;min-height:100px;">
-          <div class="radius-5" style>
-            <img :src="uploadpath+'resource/'+res.icon2 " class="img" style>
-            <div class="bg-gray padding-10 under">
-              <div class="txt-bold">宝宝心情不佳的说法大事发生发撒啊撒打发</div>
-              <div class="flex-row flex-center under margin-top-5">
-                <img
-                  :src="uploadpath+'resource/'+res.icon2"
-                  class="bg-gray icon-20 radius-50"
-                  style
-                >
-
-                <div class="txt-bold flex-1">sss</div>
-
-                <img :src="uploadpath+'resource/'+res.dianzan" class="icon-10 margin-top-5" style>
-
-                <div class="margin-top-10 margin-left-5">20</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
 

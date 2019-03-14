@@ -253,7 +253,8 @@ class Content extends AppBase {
     }
 
     this.uploadFile(this.photo, "baby", filename => {
-      
+      if(this.canshu1==undefined)
+      {
       this.post("news", "addbaby", {
         name: name,
         sex: sex,
@@ -266,6 +267,26 @@ class Content extends AppBase {
           window.history.go(-1);
         }
       });
+
+      }
+      else{
+this.post("news", "addbaby", {
+ primary_id:this.canshu1,
+        name: name,
+        sex: sex,
+        birthday: birthday,
+        between_id: this.sex2,
+        img: filename,
+        status: "A"
+      }).then(ret => {
+        if (ret.code == "0") {
+          window.history.go(-1);
+        }
+      });
+
+
+      }
+
     });
   }
 }

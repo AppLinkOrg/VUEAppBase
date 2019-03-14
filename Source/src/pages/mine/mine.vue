@@ -16,10 +16,10 @@ body {
       <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:30%;">
       <div class="bg-gray" style="width:100%;height:700px;"></div>
     </div>
-    <div style="z-index:1;position:fixed;width:100%">
+    <div style="z-index:1;position:fixed;width:100%"  >
       <div class="padding">
         <div class="flex-row flex-column ">
-          <div class="height-30"></div>
+          <div class="height-30" ></div>
           <img   
             :src="uploadpath+'member/'+(MemberInfo==null||MemberInfo.photo==''?InstInfo.memberlogo:MemberInfo.photo)"
             class="icon-30 bg-white"
