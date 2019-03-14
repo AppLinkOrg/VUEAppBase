@@ -15,7 +15,7 @@
 .seek_btn{
      position:fixed;
     z-index:1;
-    bottom:20%;
+    bottom:10%;
     width: 100%
 }
 
@@ -39,7 +39,7 @@
 
 
 <div class="flex-row  flex-column seek_btn padding">
- <mt-button  class='h8'  style="width:50%;height:30px" type="primary">开始扫描</mt-button>
+ <mt-button  class='h8'  style="width:50%;height:40px" type="primary">开始扫描</mt-button>
 </div>
 
 

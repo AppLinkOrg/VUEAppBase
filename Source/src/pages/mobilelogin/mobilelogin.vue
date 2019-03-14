@@ -11,7 +11,7 @@
         <img :src="uploadpath+'resource/'+res.mobile" class="icon-30">
       </div>
 
-      <div @click="push('/register')" class>新用户注册</div>
+      
     </div>
 
     <div class="margin-top-40 margin-left-10">
@@ -28,6 +28,7 @@
             </div>
           </div>
         </div>
+
 
         <div class="margin-top-20">
           <div class="flex-row column">
@@ -46,7 +47,7 @@
 
         <div class="margin-top-20">
           <div class="flex-row flex-center">
-            <div class="flex-1"></div> 
+            <div @click="push('/register')" class='flex-1 txt-gray'>新用户注册</div>
             <div class="h8 txt-gray" @click="push('forgetpassword')">忘记密码?</div>
           </div>
         </div>
