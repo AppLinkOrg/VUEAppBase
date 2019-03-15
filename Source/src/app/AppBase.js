@@ -65,13 +65,13 @@ export class AppBase {
     console.log(this.$route.params);
     this.onMyLoad();
   }
-
-  
   onMyLoad(options) {
     console.log("onMyLoad");
   }
+  
   onBaseShow() {
     console.log("onBaseShow");
+
     if (AppBase.InstInfo == null) {
       this.post("inst", "info", {}).then((InstInfo) => {
         this.InstInfo = InstInfo;
@@ -105,7 +105,7 @@ export class AppBase {
       });
     }
 
-    
+
 
   }
 
@@ -245,14 +245,11 @@ export class AppBase {
     window.localStorage.removeItem("UserToken");
   }
   push(url, needlogin = false) {
-    
     if (needlogin == false) {
-      
       this.$router.push(url);
     } else {
-      
       if (this.isLogin() == false) {
-        this.push("/login");
+        this.push("/mobilelogin");
       } else {
         this.$router.push(url);
       }
@@ -261,8 +258,6 @@ export class AppBase {
   pushParam(name,param, needlogin = false) {
     console.log("go to push param");
     console.log(param);
-    console.log(name);
-    console.log(this.$router);
     if (needlogin == false) {
       this.$router.push({ name: name, params: param});
     } else {
@@ -273,6 +268,7 @@ export class AppBase {
       }
     }
   }
+
   back(level = -1) {
     this.$router.go(level);
   }
@@ -293,7 +289,6 @@ export class AppBase {
   }
   //拍照
   takePhoto(success){
-   
     PhotoMgr.takePhoto(success,(e)=>{
       console.log("take photo fail");
       console.log(e);
@@ -301,9 +296,7 @@ export class AppBase {
   }
   //获取手机图片
   choosePhoto(success){
-    
     PhotoMgr.getPicture(success,(e)=>{
-      
       console.log("get photo fail");
       console.log(e);
     });
@@ -354,6 +347,7 @@ export class AppBase {
 
 
   //   var fileTransfer: FileTransferObject = transfer.create();
+
   //   return fileTransfer.upload(filepath, ApiConfig.getFileUploadAPI() + "?field=img&module=" + module, options)
   //       .then((data) => {
   //           // success

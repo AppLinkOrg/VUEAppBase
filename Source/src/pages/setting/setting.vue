@@ -111,25 +111,25 @@ class Content extends AppBase {
   }
 
    Language(picker, values) {
-    this.dateSlots = [{ values: ["1", "2"] }];
+    this.dateSlots = [{ values: ["中文", "English"] }];
     //document.getElementsByClassName("input")[0].value = values[0];
   }
     Comfortreminder(picker, values) {
-    this.dateSlots2 = [{ values: ["哈哈", "嘿嘿"] }];
+    this.dateSlots2 = [{ values: ["开", "关"] }];
     //document.getElementsByClassName("input")[0].value = values[0];
   }
     Comfortregulation(picker, values) {
-    this.dateSlots3 = [{ values: ["嗷嗷", "完卫"] }];
+    this.dateSlots3 = [{ values: ["最节约", "经济","平衡","舒适","最舒适"] }];
     //document.getElementsByClassName("input")[0].value = values[0];
   }
 
      Monitoring(picker, values) {
-    this.dateSlots4 = [{ values: ["人人", "风格"] }];
+    this.dateSlots4 = [{ values: ["打开", "关闭"] }];
     //document.getElementsByClassName("input")[0].value = values[0];
   }
 
      Turnover(picker, values) {
-    this.dateSlots5 = [{ values: ["大幅度", "天天投"] }];
+    this.dateSlots5 = [{ values: ["1小时", "2小时", "3小时", "不提醒"] }];
     //document.getElementsByClassName("input")[0].value = values[0];
   }
 

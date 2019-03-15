@@ -4,7 +4,7 @@
       <div to="/" slot="left">
         <mt-button v-if="show==1" icon="back" @click="back()"></mt-button>
         <mt-button v-if="show==2" icon="back" @click="nextthree()"></mt-button>
-        <mt-button v-if="show==3" icon="back" @click="nextone()"></mt-button>
+        <!-- <mt-button v-if="show==3" icon="back" @click="nextone()"></mt-button> -->
       </div>
     </mt-header>
     <div class="height-40"></div>
@@ -12,11 +12,14 @@
       <div>
 
         <div v-if="show==1">
-          <div class="flex-row flex-center">
-            <div>
-              <img  :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right">
+          <div class="flex-row column padding-20">
+            <div class="txt-bold h7">
+              <!-- <img  :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right"> -->
+              新用户注册
             </div>
-            <div class="flex-1">
+            <div class="height-50"></div>
+            <div class="flex-1 flex-row column">
+              <div>手机号码</div>
               <mt-field
                 :disabled="inverify==true"
                 placeholder="+86 请输入手机号码"
@@ -28,7 +31,7 @@
           </div>
         </div>
 
-        <div v-if="show==2">
+        <!-- <div v-if="show==2">
           <div class="flex-row flex-center">
             <div>
               <img  :src="uploadpath+'resource/'+res.name" class="icon-20 margin-right">
@@ -43,9 +46,9 @@
               ></mt-field>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div v-if="show==3">
+        <!-- <div v-if="show==3">
           <div class="flex-row flex-center">
             <div>
               <img :src="uploadpath+'resource/'+res.shuo" class="icon-20 margin-right">
@@ -59,46 +62,51 @@
               ></mt-field>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="hr"></div>
-        <div class="margin-top-20" v-if="inverify==false">
+        <div class="margin-top-20 padding-20" v-if="inverify==false">
 
           <mt-button
           v-if="show==1"
             size="large"
             type="primary"
             :disabled="mobile.length!=11"
-            @click="nextone()"
+            @click="setInVerify()"
           >下一步</mt-button>
 
-          <mt-button
+          <!-- <mt-button
           v-if="show==2"
             size="large"
             type="primary"
             :disabled="name.trim()==''"
             @click="setInVerify()"
-          >下一步</mt-button>
+          >下一步</mt-button> -->
 
-          <mt-button
+          <!-- <mt-button
           v-if="show==3"
             size="large"
             type="primary"
             :disabled="mobile.length!=11||name.trim()==''||password.length<6"
             @click="setInVerify()"
-          >下一步</mt-button>
+          >下一步</mt-button> -->
 
 
 
         </div>
-        <div class="margin-top-20" v-if="inverify==true">
+
+        <div class="padding-20" v-if="inverify==true&&show==2">
+
           <div class="h8 txt-gray">
-            我们已经发送验证短信到你手机：{{mobile}}
-            <br>请将验证好填入以下输入框
+            <div class="txt-bold h7 txt-black">验证码已发送至手机</div>
+            <div class="txt-red txt-bold h7 margin-top-10">+86 {{mobile}}</div>
+            <div class="margin-top-20 txt-black">请输入验证码</div>
           </div>
+
           <div class="margin-top-40">
             <div class="flex-row text-center">
               <div class="flex-1"></div>
+
               <div>
                 <input
                   type="tel"
@@ -192,6 +200,7 @@ class Content extends AppBase {
   }
   setInVerify() {
     this.sendVerifyCode();
+    this.show=2;
     this.timer = setInterval(() => {
       if (this.reminder > 0) {
         this.reminder--;
@@ -226,8 +235,8 @@ class Content extends AppBase {
       if (ret.code == 0) {
         this.post("member", "register", {
           mobile: this.mobile,
-          name: this.name,
-          password: this.password
+          // name: this.name,
+          // password: this.password
         }).then(ret => {
           if (ret.code == "0") {
             this.toast("注册成功");

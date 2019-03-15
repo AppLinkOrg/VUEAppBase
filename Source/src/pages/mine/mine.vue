@@ -1,8 +1,6 @@
 
 <style>
-body {
-  background: #eeeeee ;
-}
+
 .bg {
   position: fixed;
   top: 0;
@@ -12,10 +10,10 @@ body {
 </style>
 
 <template>
-  <div>
+  <div style="background-color:#cfcecf">
     <div class="bg">
-      <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:30%;">
-      <div class="bg-gray" style="width:100%;height:700px;"></div>
+      <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:300px;">
+      <div class="bg-gray" style="width:100%;"></div>
     </div>
     <div style="z-index:1;position:fixed;width:100%"  >
       <div class="padding">

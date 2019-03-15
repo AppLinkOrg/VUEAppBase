@@ -20,26 +20,31 @@ body {
       </mt-header>
     </div>
 
+
+
     <div class>
       <img :src="uploadpath+'baby/'+momentsinfo.imgs" class="" style="width:100%;height:400px">
     </div>
 
-    <div class="padding-10 flex-row flex-center">
-      <img :src="uploadpath+'member/'+momentsinfo.member_photo" class="radius-50 icon-20 " style>
 
+
+    <div class="padding-10 flex-row flex-center">
+
+      <img :src="uploadpath+'member/'+momentsinfo.member_photo" class="radius-50 icon-20 " style>
+      
       <div class="flex-row column flex-1 margin-left-5">
         <div class="txt-bold h7-5">{{momentsinfo.member_name}}</div>
         <div class="txt-gray margin-top-5">{{momentsinfo.rsl_date_formatting}}</div>
       </div>
       
       <img
-        :src="uploadpath+'resource/'+res.dianzan"
+        :src="uploadpath+'resource/'+res.mylike"
         class="radius-50 icon-15  margin-right-5"
         style
         @click="dianzan"
       >
 
-      <div class="margin-right-10 margin-top-10 h7-5 ">{{momentsinfo.count}}</div>
+      <div class="margin-right-10 margin-top-10 h7-5 txt-bold">{{momentsinfo.count}}</div>
     </div>
 
     <div class="padding-10 h7 txt-bold ">{{momentsinfo.summary}}</div>
@@ -70,8 +75,8 @@ body {
     </div>
 
     <div class="pinlun flex-row flex-center"  style="border-top:1px solid gray;">
-    <input   class="h7 txt-bold padding-10 " name="talk"  style="height:50px;width:100%;"  placeholder="说两句">
-    <mt-button class=" bg-gray h7-5" type="primary"  size="small"  style="width:70px;height:50px" @click="submit" >评论</mt-button>
+    <input   class="h8 txt-bold padding-10 " v-model="mseeage" name="talk"  style="height:40px;width:100%;"  placeholder="说两句">
+    <mt-button class=" bg-gray h8" type="primary"  size="small"  style="width:60px;height:40px;border-radius:0" @click="submit" >评论</mt-button>
     </div>
 
     <div class="height-50"></div>
@@ -101,6 +106,7 @@ class Content extends AppBase {
     this.info();
     this.submit();
     this.dianzan();
+
   }
 
   info() {
@@ -110,12 +116,12 @@ class Content extends AppBase {
   }
 
 
-
   tklist() {
     this.post("moments", "talklist", {babycle_id:this.aid}).then(ret => {
       this.talklist = ret;
     });
   }
+
 
   lklist() {
     this.post("moments", "likelist", {babycle_id:this.aid}).then(ret => {
@@ -128,11 +134,13 @@ class Content extends AppBase {
 
   submit(){
   var talks=document.getElementsByName("talk");
+  this.mseeage="";
   // console.log(talks[0].value);
   // console.log("0534445454445645");\
   this.post("moments", "addtalk", {babycle_id:this.aid,msg:talks[0].value}).then(ret => {
       this.addtalk = ret;
       this.tklist();
+      this.mseeage="";
   });
 
   }
