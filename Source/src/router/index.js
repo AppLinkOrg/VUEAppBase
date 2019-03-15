@@ -121,6 +121,11 @@ export default  [{
       component: include('setting/setting')
     },
     {
+      path: '/mylike',
+      name: 'mylike',
+      component: include('mylike/mylike')
+    },
+    {
       path: '/mybaby',
       name: 'mybaby',
       component: include('mybaby/mybaby')

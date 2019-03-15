@@ -1,6 +1,5 @@
 
 <style>
-
 .bg {
   position: fixed;
   top: 0;
@@ -19,7 +18,7 @@
       <div class="padding">
         <div class="flex-row flex-column ">
           <div class="height-30" ></div>
-          <img   
+          <img
             :src="uploadpath+'member/'+(MemberInfo==null||MemberInfo.photo==''?InstInfo.memberlogo:MemberInfo.photo)"
             class="icon-30 bg-white"
             style="border:2px solid white;border-radius:50%"
@@ -61,7 +60,7 @@
             class="icon-15 margin-left-10"
             style="border:1px solid white;border-radius:50%"
           >
-          <div class="margin-left-10 txt-bold">我的点赞</div>
+          <div class="margin-left-10 txt-bold" @click="push('/mylike')">我的点赞</div>
         </div>
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
