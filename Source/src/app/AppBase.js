@@ -272,12 +272,12 @@ export class AppBase {
   back(level = -1) {
     this.$router.go(level);
   }
-
-  store(name, key = null) {
-    if (key == null) {
+  
+  store(name, value = null) {
+    if (value == null) {
       return window.localStorage.getItem(name);
     } else {
-      window.localStorage.setItem(name, key);
+      window.localStorage.setItem(name, value);
       return "";
     }
   }

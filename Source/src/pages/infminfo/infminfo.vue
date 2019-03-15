@@ -29,7 +29,7 @@ body {
  <div  class="margin-10 flex-row flex-center"  >
       <div class="flex-1 txt-black txt-bold h7">育儿推荐</div>
       <div>
-        <img :src="uploadpath+'resource/'+res.you" class="icon-10 margin-left-10">
+        <!-- <img :src="uploadpath+'resource/'+res.you" class="icon-10 margin-left-10"> -->
       </div>
     </div>
     <div
