@@ -43,14 +43,15 @@
 
     <div class="padding-5 txt-red   flex-row flex-center">
       <div class="flex-1"></div>
-      <div class="flex-4 h7-5 txt-bold">请立即添加您的宝贝...</div>
+      <div class="flex-4 h7-5 txt-bold">{{mybaby[0]!=null?mybaby[0].baby_name:"请立即添加您的宝贝"}}</div>
+     
     </div>
     
     <div class=" txt-red   flex-row flex-center">
       <div class="flex-2"></div>
       <div class="flex-1">
           <img
-            :src="uploadpath+'resource/'+res.babyface"
+            :src="uploadpath+  (mybaby[0]!=null?'baby/':'resource/')  + (mybaby[0]!=null? mybaby[0].baby_img:res.babyface)"
             class="icon-30 bg-white "
             style="border:2px solid white;border-radius:50%"
           >
@@ -178,11 +179,23 @@ class Content extends AppBase {
   //   });
   // }
 
-  // setData(data) {
-  //   data.photo = "";
-  //   data.afphoto = "";
-  //   return data;
-  // }
+  setData(data) {
+   data.mybaby='';
+    return data;
+  }
+  onMyLoad(){
+
+  }
+  onMyShow(){
+this.post("news", "thisbaby",  { id:this.MemberInfo.id }).then(ret => {
+  console.log(ret);
+  console.log(456465);
+this.mybaby=ret;
+   
+    
+    });
+
+  }
   
   // upload(){
   //   this.uploadFile(this.photo,"member",(filename)=>{
