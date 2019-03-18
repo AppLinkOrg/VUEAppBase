@@ -55,7 +55,7 @@ body {
       
     </div>
 
-    <div class="padding-10 txt-bold h7-5" >评论(0):</div>
+    <div class="padding-10 txt-bold h7-5" >评论({{talklist.length}}):</div>
 
     <div class="flex-row padding-left-10 padding-right-10 margin-top-20" v-for="(item, index) in talklist" :key="index">
 

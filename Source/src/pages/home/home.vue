@@ -187,9 +187,8 @@ class Content extends AppBase {
 
   }
   onMyShow(){
-this.post("news", "thisbaby",  { id:this.MemberInfo.id }).then(ret => {
-  console.log(ret);
-  console.log(456465);
+this.post("news", "thisbaby",  { member_id:this.MemberInfo.id }).then(ret => {
+  
 this.mybaby=ret;
    
     

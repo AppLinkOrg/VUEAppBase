@@ -1,7 +1,9 @@
 <template>
-  <div class="div">
+  <div class="div ">
     <transition name="router-slid" mode="out-in">
+      
       <router-view></router-view>
+      <div style="height:180px;"></div>
     </transition>
 
     <section id='foot_guide' class="border-top">
@@ -55,7 +57,9 @@
 <style lang="scss" scoped>
   @import 'src/style/mixin';
   @import 'src/style/vue-transition.scss';
+
   .div {
+    
     min-height: 100%;
   }
   #foot_guide {

@@ -18,12 +18,12 @@
       <div class="padding">
         <div class="flex-row flex-column ">
           <div class="height-30" ></div>
-          <img
+          <img    @click="qwe"
             :src="uploadpath+'member/'+(MemberInfo==null||MemberInfo.photo==''?InstInfo.memberlogo:MemberInfo.photo)"
             class="icon-30 bg-white"
             style="border:2px solid white;border-radius:50%"
           >
-          <div class="margin-top-20 txt-bold h7">{{(MemberInfo==null||MemberInfo.name==''?"请登录":MemberInfo.name)}}</div>
+          <div class="margin-top-20 txt-bold h7" >{{(MemberInfo==null||MemberInfo.name==''?"请登录":MemberInfo.name)}}</div>
           <div class="height-40"></div>
         </div>
 
@@ -88,12 +88,16 @@ class Content extends AppBase {
   }
 
 
-
+qwe(){
+if(this.MemberInfo==null){
+  this.push('/mobilelogin')
+  }
+}
 }
 
 var content = new Content();
 var body = content.generateBodyJson();
-
+body.methods.qwe = content.qwe;
 export default body;
 </script>
 
