@@ -126,6 +126,11 @@ export default  [{
       component: include('mylike/mylike')
     },
     {
+      path: '/historydata',
+      name: 'historydata',
+      component: include('historydata/historydata')
+    },
+    {
       path: '/mybaby',
       name: 'mybaby',
       component: include('mybaby/mybaby')
