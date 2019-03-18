@@ -10,7 +10,7 @@
   <div>
     <div class="height-40">
       <mt-header title="我的点赞" style="background-color:#FF4081" fixed>
-        <router-link to="/childcarering" slot="left">
+        <router-link to="/mine" slot="left">
           <mt-button icon="back"></mt-button>
         </router-link>
       </mt-header>
@@ -41,7 +41,7 @@
 
         <div
           class="margin-top-5 txt-bold"
-          style="width:80%;overflow:hidden; 
+          style="width:80%;overflow:hidden;
 text-overflow:ellipsis;
 white-space:nowrap;
 }"
