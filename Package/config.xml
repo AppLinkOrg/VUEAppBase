@@ -30,4 +30,5 @@
         <variable name="WECHATAPPID" value="wxc753bebfd690901a" />
     </plugin>
     <engine name="android" spec="^7.0.0" />
+    <plugin name="cordova-plugin-ble-central" spec="^1.2.2" />
 </widget>
