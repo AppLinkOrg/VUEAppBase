@@ -3,7 +3,7 @@
     <transition name="router-slid" mode="out-in">
       
       <router-view></router-view>
-      <div style="height:180px;"></div>
+      <!-- <div style="height:180px;"></div> -->
     </transition>
 
     <section id='foot_guide' class="border-top">

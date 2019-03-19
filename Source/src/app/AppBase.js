@@ -50,6 +50,7 @@ export class AppBase {
   //   MemberInfo: null,
   //   uploadpath: imgBaseUrl
   // };
+  static Setting={alert:"Y",sound:"Y",shushi:"1",mashu:"1",fanshen:"1",lang:"cn",lost:"0"};
   static Resources = null;
   static InstInfo = null;
   Params={};

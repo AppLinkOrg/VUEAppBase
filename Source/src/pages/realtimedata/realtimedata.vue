@@ -12,6 +12,11 @@
     bottom:20%;
     width: 100%
 }
+.url{
+  position: fixed;
+  bottom:10%;
+  width: 100%;
+}
 </style>
 <template>
   <div>
@@ -23,6 +28,7 @@
         </router-link>
       </mt-header>
     </div>
+
     <img :src="uploadpath+'resource/'+res.realtimedate" class="data_bg">
     
 <div class="flex-row column rtd padding">
@@ -60,8 +66,10 @@
 
 </div>
 
-
-    
+<div class="txt-white url flex-row flex-column">\
+  <div>查看历史数据</div>
+  <hr>
+  </div>
 
 
   </div>
