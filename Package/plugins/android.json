@@ -13,11 +13,14 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-wechat": {
-      "WECHATAPPID": "value",
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-wechat": {
+      "WECHATAPPID": "wxc753bebfd690901a",
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-ble-central": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },

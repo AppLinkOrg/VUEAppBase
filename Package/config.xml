@@ -29,5 +29,6 @@
     <plugin name="cordova-plugin-wechat" spec="^2.7.0">
         <variable name="WECHATAPPID" value="wxc753bebfd690901a" />
     </plugin>
+    <plugin name="cordova-plugin-ble-central" spec="^1.2.2" />
     <engine name="android" spec="^7.0.0" />
 </widget>
