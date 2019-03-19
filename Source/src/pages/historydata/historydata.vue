@@ -29,6 +29,11 @@
 .bg {
   background-color: #ff4081;
 }
+#chart1 {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
 
 /* .padding-T{
     padding-left: 5px;
@@ -77,7 +82,9 @@
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近30日</div>
       </div>
 
-      <div class="height-100 margin-10 txt-bold">此处为图表......</div>
+      <div class="margin-10 txt-bold">
+        <div id="main" style="width:auto;height:400px;"></div>
+      </div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
@@ -89,11 +96,9 @@
           style="border-bottom:1px solid gray;padding-bottom:5px"
         >暂无记录</div>
       </div>
-
     </div>
 
     <div class v-if="show==2">
-
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -120,7 +125,6 @@
         <div class="flex-1 text-center txt-gray txt-bold">2015-02-02</div>
         <div class="flex-1 text-center txt-bold">1</div>
       </div>
-
     </div>
 
     <div class v-if="show==3">
@@ -132,7 +136,7 @@
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近30日</div>
       </div>
 
-            <div class="height-100 margin-10 txt-bold">此处为图表......</div>
+      <div class="height-100 margin-10 txt-bold">此处为图标...</div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
@@ -150,7 +154,6 @@
         <div class="flex-1 text-center txt-gray txt-bold">2014-12-02</div>
         <div class="flex-1 text-center txt-bold">0</div>
       </div>
-
     </div>
 
     <div class v-if="show==4">
@@ -162,7 +165,7 @@
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近30日</div>
       </div>
 
-            <div class="height-100 margin-10 txt-bold">此处为图表......</div>
+      <div class="height-100 margin-10 txt-bold">此处为图表......</div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
@@ -187,6 +190,14 @@
 
 <script>
 import { AppBase } from "../../app/AppBase";
+// 引入基本模板
+// let echarts = require('echarts/lib/echarts')
+// 引入柱状图组件
+// require('echarts/lib/chart/bar')
+// 引入提示框和title组件
+// require('echarts/lib/component/tooltip')
+// require('echarts/lib/component/title')
+
 class Content extends AppBase {
   constructor() {
     super();
@@ -194,6 +205,40 @@ class Content extends AppBase {
   setData(data) {
     data.show = "1";
     return data;
+  }
+  init(){
+      var myChart = this.$echarts.init(document.getElementById("main"));
+
+    // 指定图表的配置项和数据
+    myChart.setOption({
+      xAxis: {
+        type: "category",
+        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+      },
+      yAxis: {
+        type: "value"
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: "line"
+        }
+      ]
+    });
+  }
+  onMyLoad(){
+      console.log(1111111);
+      
+    
+  }
+
+  onMyShow() {
+      console.log(2222222)
+    this.init();
+    
+
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.setOption(option);
   }
 
   Urinedampness() {
@@ -217,6 +262,8 @@ body.methods.Urinedampness = content.Urinedampness;
 body.methods.Drop = content.Drop;
 body.methods.Usesheet = content.Usesheet;
 body.methods.Urinevolume = content.Urinevolume;
+body.methods.creatE = content.creatE;
+body.methods.init = content.init;
 
 export default body;
 </script>

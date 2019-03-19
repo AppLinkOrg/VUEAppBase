@@ -9,6 +9,26 @@ import Calendar from 'vue-mobile-calendar'
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 import './assets/css/my-mint.scss'
+import $ from 'jquery'
+
+
+// // 导入vue-echarts插件
+// import ECharts from 'vue-echarts/components/ECharts'
+// // 导入echarts的图形类型
+// import 'echarts/lib/chart/radar'
+// import 'echarts/lib/chart/line'
+// import 'echarts/lib/chart/bar'
+// // 导入工具部分
+// import 'echarts/lib/component/tooltip'
+// import 'echarts/lib/component/title';
+// import 'echarts/lib/component/legendScroll';
+// import 'echarts/lib/component/dataZoom';
+// import 'echarts/lib/component/markPoint';
+// import 'echarts/lib/component/markLine';
+// import 'echarts/lib/component/markArea';
+// import 'echarts/lib/component/dataZoom';
+// Vue.component('chart', ECharts)
+
 
 
 
@@ -173,3 +193,4 @@ if(/Win/i.test(navigator.platform))
 else{
   
 }
+
