@@ -14,29 +14,29 @@
        
      
       <router-link  to="/" class="guide_item" :class="isActived('home')?'actived':''" tag="div">
-        <img v-if="isActived('home')"  class="icon_style" src="../assets/two.png" />
-        <img  v-if="!isActived('home')" class="icon_style" src="../assets/one.png" />
+        <img v-if="isActived('home')"  class="icon_style" src="../assets/a-1.png" />
+        <img  v-if="!isActived('home')" class="icon_style" src="../assets/a.png" />
         <span>呵护</span>
       </router-link>
 
       <router-link to="/childcarering" class="guide_item" :class="isActived('childcarering')?'actived':''" tag="div">
-        <img v-if="isActived('childcarering')"  class="icon_style" src="../assets/one.png" />
-        <img  v-if="!isActived('childcarering')" class="icon_style" src="../assets/two.png" />
+        <img v-if="isActived('childcarering')"  class="icon_style" src="../assets/b-1.png" />
+        <img  v-if="!isActived('childcarering')" class="icon_style" src="../assets/b.png" />
         
         <span>育儿圈</span>
       </router-link>
 
       <router-link to="/Information" class="guide_item" :class="isActived('Information')?'actived':''" tag="div">
-      <img v-if="isActived('Information')"  class="icon_style" src="../assets/three.png" />
-        <img  v-if="!isActived('Information')" class="icon_style" src="../assets/member.png" />
+      <img v-if="isActived('Information')"  class="icon_style" src="../assets/c-1.png" />
+        <img  v-if="!isActived('Information')" class="icon_style" src="../assets/c.png" />
         
         <span>资讯</span>
       </router-link>
 
       <router-link to="/mine" class="guide_item" :class="isActived('mine')?'actived':''" tag="div">
      
-         <img v-if="isActived('mine')"  class="icon_style" src="../assets/member.png" />
-        <img  v-if="!isActived('mine')" class="icon_style" src="../assets/three.png" />
+         <img v-if="isActived('mine')"  class="icon_style" src="../assets/d-1.png" />
+        <img  v-if="!isActived('mine')" class="icon_style" src="../assets/d.png" />
         <span>我的</span>
       </router-link>
 

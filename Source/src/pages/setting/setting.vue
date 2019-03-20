@@ -34,13 +34,13 @@
 
     <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun4" style="">
         <div class="txt-bold">安全监控提醒：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">嗷嗷</div>
+        <div class="flex-1 text-right margin-right-10 txt-bold">打开</div>
         <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
     </div>
 
     <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun5" style="">
         <div class="txt-bold">翻身提醒：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">啊啊啊</div>
+        <div class="flex-1 text-right margin-right-10 txt-bold">1小时</div>
         <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
     </div>
 
