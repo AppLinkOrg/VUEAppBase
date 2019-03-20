@@ -20,7 +20,7 @@
 </style>
 <template>
   <div>
-    
+
     <div class="height-40">
       <mt-header title="实时数据" class="txt-black" style="background-color:white" fixed>
         <router-link to="/home" slot="left">
@@ -30,7 +30,7 @@
     </div>
 
     <img :src="uploadpath+'resource/'+res.realtimedate" class="data_bg">
-    
+
 <div class="flex-row column rtd padding">
 
     <div class="flex-row flex-center flex-1 margin-left-40" style="">
@@ -66,9 +66,11 @@
 
 </div>
 
-<div class="txt-white url flex-row flex-column">\
-  <div>查看历史数据</div>
-  <hr>
+
+
+  <div class="txt-white url flex-row flex-column" @click="push('/historydata')">
+  <div>查看历史数据>><hr class="" style="margin-top:0"></div>
+
   </div>
 
 
