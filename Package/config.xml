@@ -34,6 +34,6 @@
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="26.+" />
     </plugin>
     <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
-    <engine name="android" spec="^7.0.0" />
     <plugin name="cordova-plugin-ble-central" spec="^1.2.2" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

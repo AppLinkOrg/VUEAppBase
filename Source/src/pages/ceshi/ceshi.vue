@@ -45,15 +45,204 @@ class Content extends AppBase {
   // }
   setData(data) {
     data.aidevice =new AIDevice() ;
-    
+    data.count=0;
+    data.uuid=[];
+    data.selectdeviceid="";
     return data;
   }
 
   onMyLoad(){
 
   }
-  onMyShow(){
- var mockdevice
+  onMyShow() {
+    //alert(this.Lang["generalindex"]);
+   console.log(6666666);
+    this.nativeAudio.preloadSimple('fall', 'assets/ring/fall.mp3');
+    this.nativeAudio.preloadSimple('wet', 'assets/ring/wet.mp3');
+    this.nativeAudio.preloadSimple('fanshen', 'assets/ring/fanshen.mp3');
+    this.nativeAudio.preloadSimple('fanshen2', 'assets/ring/fanshen2.mp3');
+
+    this.localNotifications.hasPermission().then((res)=>{
+      if(res==false){
+        this.localNotifications.requestPermission();
+      }
+    });
+
+    //alert(this.backgroundMode.isEnabled());
+
+    if(this.backgroundMode.isEnabled()==false){
+      this.backgroundMode.enable();
+    }
+
+    var that = this;
+    this.aidevice.startTime();
+    this.aidevice.setNotification(this.localNotifications);
+    this.aidevice.setNativeAudio(this.nativeAudio);
+    if (this.selectdeviceid == "" && AppBase.IsAndroid) {
+      //
+      this.modal("ScanPage", {}, (selectdevice) => {
+        //alert(selectdevice);
+        this.selectdeviceid = selectdevice.id;
+        this.tryScan();
+      });
+    } else {
+      this.tryScan();
+    }
+
+
+    try {
+      AppBase.Storage.get("selectdeviceid").then((id) => {
+        this.selectdeviceid = id;
+      });
+    } catch (ex) {
+
+    }
+
+    // AppBase.Storage.get("selectdeviceid").then((selectdeviceid)=>{
+    //   this.selectdeviceid=selectdeviceid;
+    // });
+
+    //this.modal("ScanPage",{},(selectdevice)=>{
+    //alert(1);
+    //this.selectdeviceid=selectdevice.id;
+    //
+    //});
+
+
+    
+
+
+    // setTimeout(()=>{
+    //   this.localNotifications.schedule({
+    //     text:"aa"
+    //   });
+    // },5000);
+  }
+   tryScan() {
+    //alert(this.device.advertising);
+    if (AppBase.IsMobileWeb) {
+      this.aidevice.reloaddata(this.mockdevice.id, this.mockdevice.advertising, 0);
+      //alert(this.aidevice.Version);
+    }
+    else {
+      try {
+        this.ble.stopScan();
+      } catch (e) {
+
+      }
+      var uuid=this.uuid;
+      
+      this.ble.startScanWithOptions([], { reportDuplicates: true }).subscribe((device) => {
+        //alert(JSON.stringify(device));
+        //if(this.selectdeviceid!=)
+        if(device.name==undefined){
+          return;
+        }
+        device.uuid=[];
+        if (device.advertising.kCBAdvDataManufacturerData != undefined) {
+          var adv = [];
+          device.uuid=device.advertising.kCBAdvDataServiceUUIDs;
+          var int32View = new Uint8Array(device.advertising.kCBAdvDataManufacturerData);
+          for (var i = 0; i < int32View.length; i++) {
+            adv.push(int32View[i].toString());
+          }
+          device.advertising = "2,1,6,17,-1," + adv.join(",") + ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+          //alert(device.name);
+          //alert(device.advertising);
+        }
+        //alert(JSON.stringify(device));
+        if(device.advertising==undefined&&typeof(device.advertising) != 'string'){
+          return;
+        }
+        //alert(JSON.stringify(device));
+
+        var scanRecord = device.advertising.split(",");
+        var Version = AIDevice.GetVersion(scanRecord);
+        var mlength = AIDevice.GetwholeDatelength(Version);
+        //alert(scanRecord.length+"<"+mlength);
+        if (scanRecord.length < mlength) {
+          return;
+        }
+        var mData = [];
+        if (Version == 0) {
+          mData = Array(7);
+        }
+        else if (Version == 1) {
+          mData = Array(7);
+        }
+        else if (Version == 2) {
+          mData = Array(8);
+        }
+        //						mTimeOutHandler.removeCallbacks(mThreadTimeOut);
+        //						runOnUiThread(capEnter);
+        var mdataPosition = AIDevice.GetDataPosition(Version);
+        for (var i = mdataPosition; i < (mData.length + mdataPosition); i++) {
+          mData[i - mdataPosition] = scanRecord[i];
+        }
+        device.id=AIDevice.GetID(scanRecord);
+        device.TYPE=AIDevice.GetType(scanRecord);
+
+        if (device.name != undefined && (device.TYPE=="LNT"||device.TYPE=="CHA")
+          && this.selectdeviceid == device.id) {
+          //device.data = JSON.stringify(device);
+          //this.ble.stopScan();
+          //this.close(device);
+
+            
+          //window.localStorage.setItem("luuid", device.uuid);
+          //alert(JSON.stringify(device.data));
+          //this.tryConnect();
+
+          this.uuid=device.uuid;
+          
+          if (device.advertising != undefined) {
+            //alert(this.device.advertising);
+            this.count++;
+            this.aidevice.reloaddata(device.id, device.advertising, parseInt(device.rssi));
+            //alert(this.aidevice.Version);
+          }
+          //2.73.0
+        }
+
+      }, (error) => {
+        alert(error);
+      }, () => {
+      });
+    }
+
+  }
+   handelFall() {
+    //salert(1);
+    const confirm = this.alertCtrl.create({
+      title: '摔倒处理',
+      message: '已经处理完毕？',
+      buttons: [
+        {
+          text: '否',
+          handler: () => {
+
+          }
+        },
+        {
+          text: '是',
+          handler: () => {
+            this.aidevice.fall = "N";
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  stringToBytes(string) {
+    var array = new Uint8Array(string.length);
+    for (var i = 0, l = string.length; i < l; i++) {
+      array[i] = string.charCodeAt(i);
+    }
+    return array.buffer;
+  }
+  bytesToString(buffer) {
+    return String.fromCharCode.apply(null, new Uint8Array(buffer));
   }
   ceshi(){
       
@@ -77,6 +266,10 @@ class Content extends AppBase {
 var content = new Content();
 var body = content.generateBodyJson();
  body.methods.ceshi=content.ceshi;
+  body.methods.bytesToString=content.bytesToString;
+   body.methods.stringToBytes=content.stringToBytes;
+    body.methods.handelFall=content.handelFall;
+     body.methods.tryScan=content.tryScan;
 // body.methods.takeP=content.takeP;
 // body.methods.upload=content.upload;
 
