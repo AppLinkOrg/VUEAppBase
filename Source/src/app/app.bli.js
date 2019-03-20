@@ -1,6 +1,7 @@
 import { AppBase } from "./AppBase";
 
-
+import { LocalNotifications } from '@ionic-native/local-notifications';///1
+import { BackgroundMode } from '@ionic-native/background-mode';///2
 
 import { AppLang } from "./app.lang";
 
@@ -9,23 +10,23 @@ export class AIDevice {
 
     mapObj = null;
 
-    ftime=[];
+    ftime = [];
 
     deviceid = "";
     rssi = 0;
-    rssilist=[0,0,0,0];
+    rssilist = [0, 0, 0, 0];
     db = null;
 
     advertising = "";
     isclick = false;
     lasttimespan = 0;
 
-    reccount=0;
-    
+    reccount = 0;
+
     usetime = "--";
 
     lastupdatetime = 0;
-    lastupdatetimestr="";
+    lastupdatetimestr = "";
 
     Version = 0;
     scanRecord = [];
@@ -47,7 +48,7 @@ export class AIDevice {
 
     lastlat = "";
     lastlng = "";
-    lastaddress="";
+    lastaddress = "";
 
     runningticker = 0;
 
@@ -87,14 +88,14 @@ export class AIDevice {
         this.currentstatus = this.disconnectstatus;
         this.lastupdatetime = (new Date()).getTime() / 1000;
 
-        
+
     }
-    gostart=false;
+    gostart = false;
     startTime() {
-        if(this.gostart==true){
+        if (this.gostart == true) {
             return;
         }
-        this.gostart=true;
+        this.gostart = true;
         var that = this;
         this.statusCheck = setInterval(() => {
             this.timerFunc();
@@ -105,15 +106,15 @@ export class AIDevice {
         this.runningticker++;
 
         var nowtime = (new Date()).getTime() / 1000;
-        if (nowtime - this.lastupdatetime > 60&&this.checkIsOver()) {
+        if (nowtime - this.lastupdatetime > 60 && this.checkIsOver()) {
             if (this.sendunconnect == false) {
                 this.sendunconnect = true;
-              //  this.db.addWetRecord(this.deviceid,6,this.ml);
-                if(this.isclick==true){
+                //  this.db.addWetRecord(this.deviceid,6,this.ml);
+                if (this.isclick == true) {
 
-        var bstr=(new Date()).getHours().toString()+":"+(new Date()).getMinutes().toString()+":"+(new Date()).getSeconds().toString();
+                    var bstr = (new Date()).getHours().toString() + ":" + (new Date()).getMinutes().toString() + ":" + (new Date()).getSeconds().toString();
 
-                    this.notify(4,bstr+ AppLang.Lang["havebeenunconnect"]+this.lastupdatetimestr);
+                    this.notify(4, bstr + AppLang.Lang["havebeenunconnect"] + this.lastupdatetimestr);
                 }
             }
             this.cleardata();
@@ -134,56 +135,56 @@ export class AIDevice {
         }
     }
 
-    checkIsOver(){
-        var arr=this.ftime;
-        if(arr.length>20){
+    checkIsOver() {
+        var arr = this.ftime;
+        if (arr.length > 20) {
             return false;
         }
         var nowtime = (new Date()).getTime() / 1000;
-        var allbig=true;
-        for(var i=arr.length-1;i>=0&&i>arr.length-20;i--){
-            if(nowtime-arr[i]<60){
+        var allbig = true;
+        for (var i = arr.length - 1; i >= 0 && i > arr.length - 20; i--) {
+            if (nowtime - arr[i] < 60) {
                 return false;
             }
         }
         return true;
     }
-    
+
 
 
     cclick = false;
     reloaddata(deviceid, datastr, rssi) {
 
         this.lastupdatetime = (new Date()).getTime() / 1000;
-        this.lastupdatetimestr=(new Date()).getHours().toString()+":"+(new Date()).getMinutes().toString()+":"+(new Date()).getSeconds().toString();
+        this.lastupdatetimestr = (new Date()).getHours().toString() + ":" + (new Date()).getMinutes().toString() + ":" + (new Date()).getSeconds().toString();
 
         this.ftime.push(this.lastupdatetime);
-        
+
         this.rssi = rssi;
-        var t=this.rssilist[0];
-        var t2=this.rssilist[1];
-        var t3=this.rssilist[2];
-        this.rssilist[0]=rssi;
-        this.rssilist[1]=t;
-        this.rssilist[2]=t2;
-        this.rssilist[3]=t3;
+        var t = this.rssilist[0];
+        var t2 = this.rssilist[1];
+        var t3 = this.rssilist[2];
+        this.rssilist[0] = rssi;
+        this.rssilist[1] = t;
+        this.rssilist[2] = t2;
+        this.rssilist[3] = t3;
 
         this.reccount++;
 
-        
-        this.lastupdatetime = (new Date()).getTime() / 1000;
-        this.lastupdatetimestr=(new Date()).getHours().toString()+":"+(new Date()).getMinutes().toString()+":"+(new Date()).getSeconds().toString();
-        
 
-        if(datastr.kCBAdvDataManufacturerData!=undefined){
-            var adv=[];
+        this.lastupdatetime = (new Date()).getTime() / 1000;
+        this.lastupdatetimestr = (new Date()).getHours().toString() + ":" + (new Date()).getMinutes().toString() + ":" + (new Date()).getSeconds().toString();
+
+
+        if (datastr.kCBAdvDataManufacturerData != undefined) {
+            var adv = [];
             var int32View = new Uint8Array(datastr.kCBAdvDataManufacturerData);
-            for(var i=0;i<int32View.length;i++){
-            adv.push(int32View[i].toString());
+            for (var i = 0; i < int32View.length; i++) {
+                adv.push(int32View[i].toString());
             }
-            datastr="2,1,6,17,-1,"+adv.join(",")+",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";;
+            datastr = "2,1,6,17,-1," + adv.join(",") + ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";;
         }
-        
+
         this.advertising = datastr;
         this.scanRecord = datastr.split(",");
         this.Version = AIDevice.GetVersion(this.scanRecord);
@@ -212,7 +213,7 @@ export class AIDevice {
         this.angleData[1] = this.scanRecord[mdataPosition - 2];
         this.angleData[2] = this.scanRecord[mdataPosition - 1];
 
-        this.no = this.scanRecord[8].toString()+this.scanRecord[9].toString()+this.scanRecord[10].toString();
+        this.no = this.scanRecord[8].toString() + this.scanRecord[9].toString() + this.scanRecord[10].toString();
         this.deviceid = deviceid;
 
 
@@ -220,13 +221,13 @@ export class AIDevice {
 
         if (this.mData[0] == 0x00 || this.mData[14] == 0x00) {
             //alert("??dakai");
-            var ml=this.ml;
+            var ml = this.ml;
             this.getWetness();
             if (this.isclick == true) {
                 //this.recordapi.update({ mac: this.deviceid, op: "O", ml: this.ml, level: this.level, data: this.advertising }).then((ret) => {
                 //    console.log(ret);
                 //});
-              //  this.db.addWetRecord(this.deviceid, 3, ml);
+                //  this.db.addWetRecord(this.deviceid, 3, ml);
             }
 
             //this.db.addWetRecord(this.deviceid, 3, this.ml);
@@ -247,7 +248,7 @@ export class AIDevice {
                 //alert("?kazu");
                 if (this.mData[0] == 0x03) {
                     if (this.cclick == false) {
-                     //   this.db.addWetRecord(this.deviceid, 1, this.ml);
+                        //   this.db.addWetRecord(this.deviceid, 1, this.ml);
                         this.cclick = true;
                         setTimeout(() => {
                             this.cclick = false;
@@ -268,20 +269,20 @@ export class AIDevice {
 
         //this.checkLost();
     }
-    static GetID(data){
+    static GetID(data) {
         return String.fromCharCode(data[5])
-        +String.fromCharCode(data[6])
-        +String.fromCharCode(data[7])
-        +data[8].toString()
-        +data[9].toString()
-        +data[10].toString();
+            + String.fromCharCode(data[6])
+            + String.fromCharCode(data[7])
+            + data[8].toString()
+            + data[9].toString()
+            + data[10].toString();
     }
-    static GetType(data){
+    static GetType(data) {
         return String.fromCharCode(data[5])
-        +String.fromCharCode(data[6])
-        +String.fromCharCode(data[7]);
+            + String.fromCharCode(data[6])
+            + String.fromCharCode(data[7]);
     }
-    static getBattery() {
+    getBattery() {
         var mData = this.mData;
         var v0 = 0.0;
         if (this.Version == 2) {
@@ -300,7 +301,7 @@ export class AIDevice {
         }
     }
 
-    static getTemperature() {
+    getTemperature() {
         var tempratureValue = 0.0;
         if (this.Version == 1) {
 
@@ -467,23 +468,23 @@ export class AIDevice {
         //520	383	268	232	199	174	158	146	133	132	128	124	100
         //10	50	100	150	200	250	300	350	400	450	500	600	800
         if (CCfactor == "3") {
-            var a = [10,80,160,240,320,400,480,560];//amount table
-            var v = [520,435,303,231,184,149,127,112];
+            var a = [10, 80, 160, 240, 320, 400, 480, 560];//amount table
+            var v = [520, 435, 303, 231, 184, 149, 127, 112];
 
 
             this.setWetml(a, v, c);
 
         }
         else if (CCfactor == "2") {
-            var a = [10,80,160,240,320,400,480,560];//amount table
-            var v = [520,435,303,231,184,149,127,112];
+            var a = [10, 80, 160, 240, 320, 400, 480, 560];//amount table
+            var v = [520, 435, 303, 231, 184, 149, 127, 112];
 
 
             this.setWetml(a, v, c);
         }
         else {
-            var a = [10,80,160,240,320,400,480,560];//amount table
-            var v = [520,435,303,231,184,149,127,112];
+            var a = [10, 80, 160, 240, 320, 400, 480, 560];//amount table
+            var v = [520, 435, 303, 231, 184, 149, 127, 112];
 
 
             this.setWetml(a, v, c);
@@ -519,12 +520,12 @@ export class AIDevice {
             this.currentstatus = this.statuslist[4];
             //this.notify(15, AppLang.Lang[this.statuslist[4].msg]);
         }
-        console.log(this.level.toString()+"~"+level.toString());
+        console.log(this.level.toString() + "~" + level.toString());
         if (level > this.level) {
             //alert(this.level.toString()+""+level.toString());
             this.level = level;
             if (level == 1) {
-              //  this.db.addWetRecord(this.deviceid, 2, this.ml);
+                //  this.db.addWetRecord(this.deviceid, 2, this.ml);
                 this.notify(12, AppLang.Lang[this.statuslist[1].msg]);
             }
             if (level == 4) {
@@ -570,10 +571,10 @@ export class AIDevice {
 
     getPost() {
         var posture = this.mData[5];
-        var lastpost=window.localStorage.getItem("lastpost");
-        if(lastpost!=posture){
-            window.localStorage.setItem("movetime",(new Date()).getTime().toString());
-            window.localStorage.setItem("lastpost",posture);
+        var lastpost = window.localStorage.getItem("lastpost");
+        if (lastpost != posture) {
+            window.localStorage.setItem("movetime", (new Date()).getTime().toString());
+            window.localStorage.setItem("lastpost", posture);
         }
         if ((posture & 0x1) == 1) {  //sleeping
             this.post = AppLang.Lang["selectdown"];
@@ -612,9 +613,9 @@ export class AIDevice {
         }
 
 
-         ;
-        var move = (new Date()).getTime()-parseInt(window.localStorage.getItem("movetime"));
-        move=parseInt( (move/1000).toString());
+        ;
+        var move = (new Date()).getTime() - parseInt(window.localStorage.getItem("movetime"));
+        move = parseInt((move / 1000).toString());
         var ts = parseInt((move * 1).toFixed());
         if (ts < 60) {
             this.nomovetime = ts + AppLang.Lang["s"];
@@ -659,8 +660,8 @@ export class AIDevice {
                 console.log("牛逼");
                 console.log(this.deviceid);
                 console.log(this.ml);
-                console.log(AppLang.Lang["falltohelp"]);
-               // this.db.addWetRecord(this.deviceid, 4, this.ml);
+
+                // this.db.addWetRecord(this.deviceid, 4, this.ml);
                 setTimeout(function () {
                     that.fall30 = false;
                 }, 40000);
@@ -670,51 +671,51 @@ export class AIDevice {
         }
 
     }
-    lost30=false;
-    lastlostsign=0;
-    lastlostTimeout=null;
+    lost30 = false;
+    lastlostsign = 0;
+    lastlostTimeout = null;
     checkLost() {
         var that = this;
-        if(AppBase.Setting.lost=="0"){
+        if (AppBase.Setting.lost == "0") {
             return;
         }
-        var qc=-90;
-        var qb=-95;
-        if(AppBase.Setting.lost=="2"){
-            qc=-100;
-            qb=-105;
+        var qc = -90;
+        var qb = -95;
+        if (AppBase.Setting.lost == "2") {
+            qc = -100;
+            qb = -105;
         }
 
-        if(this.rssilist[0]<-90){
-            this.lastlostsign=this.lastupdatetime;
-            if(this.lastlostTimeout!=null){
+        if (this.rssilist[0] < -90) {
+            this.lastlostsign = this.lastupdatetime;
+            if (this.lastlostTimeout != null) {
                 clearTimeout(this.lastlostTimeout);
             }
-            this.lastlostTimeout=setTimeout(()=>{
-                if(this.lastupdatetime==this.lastlostsign){
+            this.lastlostTimeout = setTimeout(() => {
+                if (this.lastupdatetime == this.lastlostsign) {
                     //alert("没信号丢失的检查");
                     this.checkLostNotify();
                 }
-            },5000);
+            }, 5000);
         }
 
-        if ((this.rssilist[0] < qc && this.rssilist[1] < qc && this.rssilist[2] < qc&& this.rssilist[3] < qc)
-        ||(this.rssilist[0] < qb&&this.rssilist[1] < qb)
-        ||(this.rssilist[1] < qb&&this.rssilist[2] < qb)
-        ||(this.rssilist[0] < qb&&this.rssilist[2] < qb)) {
+        if ((this.rssilist[0] < qc && this.rssilist[1] < qc && this.rssilist[2] < qc && this.rssilist[3] < qc)
+            || (this.rssilist[0] < qb && this.rssilist[1] < qb)
+            || (this.rssilist[1] < qb && this.rssilist[2] < qb)
+            || (this.rssilist[0] < qb && this.rssilist[2] < qb)) {
             //alert(this.rssilist[0]+"~"+this.rssilist[1]+"~"+this.rssilist[2]+"~"+this.rssilist[3]);
             this.checkLostNotify();
         }
 
     }
-    checkLostNotify(){
-        var that=this;
-        if (this.lost != 'Y'&& this.lost30 == false) {
+    checkLostNotify() {
+        var that = this;
+        if (this.lost != 'Y' && this.lost30 == false) {
             this.lost = "Y";
-            this.lost30=true;
-            
+            this.lost30 = true;
+
             this.notify(25, AppLang.Lang["losttohelp"]);
-           // this.db.addWetRecord(this.deviceid, 5, this.ml,this.lastlat,this.lastlng,this.lastaddress);
+            // this.db.addWetRecord(this.deviceid, 5, this.ml,this.lastlat,this.lastlng,this.lastaddress);
 
             setTimeout(function () {
                 that.lost30 = false;
@@ -723,14 +724,14 @@ export class AIDevice {
     }
     debugFall() {
 
-       // this.db.addWetRecord(this.deviceid, 4, this.ml);
+        // this.db.addWetRecord(this.deviceid, 4, this.ml);
         this.fall = "Y";
         this.notify(3, AppLang.Lang["falltohelp"]);
     }
     debugLost() {
         this.lost = "Y";
         this.notify(25, AppLang.Lang["losttohelp"]);
-       // this.db.addWetRecord(this.deviceid, 5, this.ml,this.lastlat,this.lastlng);
+        // this.db.addWetRecord(this.deviceid, 5, this.ml,this.lastlat,this.lastlng);
     }
 
     cleardata() {
@@ -746,20 +747,20 @@ export class AIDevice {
         this.postimg = "";
         this.nomovetime = "--";
         this.usetime = "--";
-        this.rssilist=[0,0,0];
-        this.notifylist=[];
-        this.level=0;
+        this.rssilist = [0, 0, 0];
+        this.notifylist = [];
+        this.level = 0;
         //this.movetime=0;
-        
+
         //window.localStorage.setItem("movetime",(new Date()).getTime().toString());
         //this.displayC = 530;
 
 
-        var move = (new Date()).getTime()-parseInt(window.localStorage.getItem("movetime"));
-        move=parseInt( (move/1000).toString());
+        var move = (new Date()).getTime() - parseInt(window.localStorage.getItem("movetime"));
+        move = parseInt((move / 1000).toString());
 
-        if(move>5*3600){
-            window.localStorage.setItem("movetime",(new Date()).getTime().toString());
+        if (move > 5 * 3600) {
+            window.localStorage.setItem("movetime", (new Date()).getTime().toString());
         }
     }
     localNotifications = null;
@@ -779,13 +780,12 @@ export class AIDevice {
         if ("N" != "Y") {
             return;
         }
-        var that=this;
+        var that = this;
         var time = new Date();
         var ida = type.toString() + time.getFullYear().toString() + time.getMonth().toString() + time.getDate().toString()
-            + time.getHours().toString() + (time.getMinutes() ).toString()+ (time.getSeconds() / 10).toString();
+            + time.getHours().toString() + (time.getMinutes()).toString() + (time.getSeconds() / 10).toString();
         var id = parseInt(ida);
-        if (this.notifylist[id] == undefined) 
-        {
+        if (this.notifylist[id] == undefined) {
             if (AppBase.IsMobileWeb == false) {
 
                 try {
@@ -793,7 +793,7 @@ export class AIDevice {
                         var that = this;
 
                         var fallinterval = setInterval(function () {
-                            that.sendNot(id,content,"fall");
+                            that.sendNot(id, content, "fall");
                             that.t++;
                             if (that.fall != "Y") {
                                 that.t = 0;
@@ -801,14 +801,14 @@ export class AIDevice {
                             }
                         }, 1000);
 
-                        that.sendNot(id,content,"fall");
+                        that.sendNot(id, content, "fall");
                     }
                     else if (type == 5) {
-                        that.sendNot(id,content,"fanshen2");
+                        that.sendNot(id, content, "fanshen2");
 
                         var that = this;
                         var faninterval = setInterval(function () {
-                            that.sendNot(id,content,"fanshen2");
+                            that.sendNot(id, content, "fanshen2");
 
                             if (that.fan != "Y") {
                                 clearInterval(faninterval);
@@ -817,13 +817,13 @@ export class AIDevice {
 
                     } else if (type == 4) {
 
-                        that.sendNot(id,content,"fanshen2");
+                        that.sendNot(id, content, "fanshen2");
 
                     } else {
-                        that.sendNot(id,content,"wet");
+                        that.sendNot(id, content, "wet");
                     }
                 } catch (e) {
-                    alert("通知发送异常："+e.toString());
+                    alert("通知发送异常：" + e.toString());
                 }
 
 
@@ -833,8 +833,8 @@ export class AIDevice {
         }
     }
 
-    debug(){
-        
+    debug() {
+
         //this.rssilist[0]=-201;
         //this.checkLost();
         //this.notify(12, AppLang.Lang[this.statuslist[1].msg]);
@@ -843,15 +843,15 @@ export class AIDevice {
         //    //this.notify(12, AppLang.Lang[this.statuslist[1].msg]+this.lastupdatetimestr);
         //},20000);
     }
-    sendNot(id,content,sound){
-        if(AppBase.IsIos){
+    sendNot(id, content, sound) {
+        if (AppBase.IsIos) {
             this.localNotifications.schedule({
                 id: id,
                 text: content,
                 vibrate: true,
-                sound: "file://assets/ring/"+sound+".mp3"
+                sound: "file://assets/ring/" + sound + ".mp3"
             });
-        }else{
+        } else {
             //alert("file://assets/ring/"+sound+".mp3");
 
             this.nativeAudio.play(sound);

@@ -19,7 +19,7 @@
 
 <template>
   <div style="background-color:#eeeeee;">
-  <button  class="margin-top" @click="ceshi">测试了</button>
+  <button  class="margin-top" @click="ceshi">测试了{{aidevice.v0}}</button>
 
   </div>
 </template>
@@ -43,7 +43,11 @@ class Content extends AppBase {
   //     this.photo=src;
   //   });
   // }
- 
+  setData(data) {
+    data.aidevice =new AIDevice() ;
+    
+    return data;
+  }
 
   onMyLoad(){
 
@@ -52,13 +56,14 @@ class Content extends AppBase {
  var mockdevice
   }
   ceshi(){
-      var aidevice=new AIDevice();
+      
  
-    ble.scan([], 5, function(device) {   
+    ble.scan([], 5, (device) =>{   
         
       if(device.name!=undefined)
       {
-         aidevice.reloaddata(device.id,device.advertising,0);
+         this.aidevice.reloaddata(device.id,device.advertising,0);
+         console.log(this.aidevice);
     console.log(JSON.stringify(device));
 }
 
