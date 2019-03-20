@@ -1,28 +1,28 @@
 {
-  "_from": "cordova-plugin-wechat@^2.6.0",
-  "_id": "cordova-plugin-wechat@2.6.0",
+  "_from": "cordova-plugin-wechat@2.7.0",
+  "_id": "cordova-plugin-wechat@2.7.0",
   "_inBundle": false,
-  "_integrity": "sha512-VyJSNGvBss46DYh7Wd+TRg0UMbiMJjZaV+PGa+U+UCvSjqk5+sq8OomBMwYc0mVneygbLBbpZbCT9ydQrJnRgA==",
+  "_integrity": "sha512-S8WO2bFlPUBb/b03ubKtknlSKD/t2h2nq+67ny45mmXgljkd4++nhcILbbg+kWwPoHK2SL3y24ZS3q/rjbgoxQ==",
   "_location": "/cordova-plugin-wechat",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-wechat@^2.6.0",
+    "raw": "cordova-plugin-wechat@2.7.0",
     "name": "cordova-plugin-wechat",
     "escapedName": "cordova-plugin-wechat",
-    "rawSpec": "^2.6.0",
+    "rawSpec": "2.7.0",
     "saveSpec": null,
-    "fetchSpec": "^2.6.0"
+    "fetchSpec": "2.7.0"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-wechat/-/cordova-plugin-wechat-2.6.0.tgz",
-  "_shasum": "2c0e43570c2942fb42859b0e2ada737d3678435f",
-  "_spec": "cordova-plugin-wechat@^2.6.0",
-  "_where": "e:\\项目\\VUEAPP\\VUEAppBase\\Package",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-wechat/-/cordova-plugin-wechat-2.7.0.tgz",
+  "_shasum": "640a5c30202848ed9cb067ecfdd8095f640aceaa",
+  "_spec": "cordova-plugin-wechat@2.7.0",
+  "_where": "e:\\project\\VUEAPP\\VUEAppBase\\Package",
   "author": {
     "name": "xu.li",
     "email": "AthenaLightenedMyPath@gmail.com"
@@ -68,5 +68,5 @@
     "type": "git",
     "url": "git+https://github.com/xu-li/cordova-plugin-wechat.git"
   },
-  "version": "2.6.0"
+  "version": "2.7.0"
 }

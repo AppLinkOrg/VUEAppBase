@@ -12,7 +12,7 @@ export default  [{
   component: App,
   children: [{
       path: '',
-      redirect: '/home'
+      redirect: '/ceshi'
     },
     {
       path: '/tabs',
@@ -79,6 +79,11 @@ export default  [{
       path: '/wxauthlogin',
       name: 'wxauthlogin',
       component: include('wxauthlogin/wxauthlogin')
+    },
+    {
+      path: '/ceshi',
+      name: 'ceshi',
+      component: include('ceshi/ceshi')
     },
     {
       path: '/share',

@@ -178,9 +178,10 @@ class Content extends AppBase {
   //     this.photo=src;
   //   });
   // }
-
+ 
   setData(data) {
    data.mybaby='';
+ 
     return data;
   }
   onMyLoad(){
