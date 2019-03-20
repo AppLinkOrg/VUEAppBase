@@ -83,7 +83,7 @@
       </div>
 
       <div class="margin-10 txt-bold">
-        <div id="main" style="width:auto;height:400px;"></div>
+        <div id="main" style="width:auto;height:250px;"></div>
       </div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
@@ -99,6 +99,7 @@
     </div>
 
     <div class v-if="show==2">
+      
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -107,7 +108,9 @@
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近30日</div>
       </div>
 
-      <div class="height-100 margin-10 txt-bold">此处为图表......</div>
+      <div class="margin-10 txt-bold">
+        <div id="dieluo" style="width:auto;height:250px;"></div>
+      </div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
@@ -207,25 +210,62 @@ class Content extends AppBase {
     return data;
   }
   init(){
-      var myChart = this.$echarts.init(document.getElementById("main"));
+      
+  
+    var myChart = this.$echarts.init(document.getElementById("main"));
 
-    // 指定图表的配置项和数据
     myChart.setOption({
-      xAxis: {
-        type: "category",
-        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-      },
-      yAxis: {
-        type: "value"
-      },
-      series: [
-        {
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          type: "line"
-        }
-      ]
+        // title: {
+        //     text: '尿湿记录'
+        // },
+        
+    legend: {
+        data:['尿湿记录']
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ["0:00", "6:00", "12:00", "18:00"]
+    },
+    yAxis: {
+
+    },
+    series: [{
+        name: '尿湿记录',
+        data: [0, 0, 10, 0, 0, 0, 0],
+        type: 'line',
+        areaStyle: {}
+    }]
     });
+    
+
+
+ 
+
   }
+ 
+
+  Dieluo(){
+
+    var myCharts = this.$echarts.init(document.getElementById("dieluo"));
+    myCharts.setOption({
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ["0:00", "6:00", "12:00", "18:00"]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [0, 0, 0, 0, 0, 0, 0],
+        type: 'line',
+        areaStyle: {}
+    }]
+    });
+
+  }
+
   onMyLoad(){
       console.log(1111111);
       
@@ -235,7 +275,7 @@ class Content extends AppBase {
   onMyShow() {
       console.log(2222222)
     this.init();
-    
+    //this.Dieluo();
 
     // 使用刚指定的配置项和数据显示图表。
     // myChart.setOption(option);
@@ -263,7 +303,9 @@ body.methods.Drop = content.Drop;
 body.methods.Usesheet = content.Usesheet;
 body.methods.Urinevolume = content.Urinevolume;
 body.methods.creatE = content.creatE;
+
 body.methods.init = content.init;
+body.methods.Dieluo = content.Dieluo;
 
 export default body;
 </script>

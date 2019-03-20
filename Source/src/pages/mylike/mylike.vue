@@ -18,15 +18,15 @@
 
     <div class="flex-row margin-10 padding-10" style="border-radius:10px;background:#f8f8f8">
       <img
-        :src="uploadpath+'resource/'+res.seekbluetooth"
+        :src="uploadpath+'resource/'+res.check"
         class="icon-20"
         style="border:1px solid white;border-radius:50%"
       >
       <div class="flex-row column margin-left-10">
         <div class="flex-row flex-center">
           <div class="flex-row column flex-2">
-            <div class="txt-bold aaa">小了白了兔</div>
-            <div class="margin-top-5 txt-bold txt-gray">2018-01-12</div>
+            <div class="txt-bold aaa">ss</div>
+            <div class="margin-top-5 txt-bold txt-gray">2019-03-15</div>
           </div>
 
           <div class="flex-row flex-center flex-1 text-right">
@@ -35,7 +35,7 @@
               class="icon-10"
               style="border:1px solid white;border-radius:50%"
             >
-            <div class="margin-left-5">34</div>
+            <div class="margin-left-5">1</div>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
 text-overflow:ellipsis;
 white-space:nowrap;
 }"
-        >我家宝贝也太能尿了吧，一天要换7到8次尿布手动阀</div>
+        >哈哈哈哈哈哈镜啊姐啊</div>
       </div>
     </div>
   </div>

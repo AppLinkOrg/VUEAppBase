@@ -15,6 +15,7 @@ body {
       </mt-header>
     </div>
 
+
     <div  v-for="(item, index) in mybaby" :key='index' class="padding-20" style="border-bottom:2px solid #EEEEEE">
       <div class="flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #BBBBBB">
         <img :src="uploadpath+'baby/'+item.img" class="icon-25 radius-50">
@@ -31,6 +32,14 @@ body {
         <div class="txt-pink txt-bold" @click="pushParam('addbaby',{id:item.id})">修改</div>
         <div class="margin-left-20 txt-pink txt-bold" @click="deletebaby" :id="item.id" >删除</div>
       </div>
+
+      <div class="flex-row flex-center margin-top-10" @click="pushParam('Bluetooth')" >
+        <div > <img :src="uploadpath+'resource/'+res.bandin" class="icon-15 radius-50"></div>
+         <div class="flex-1 txt-bold margin-left-10 txt-gray">绑定设备</div>
+      </div>
+
+
+
     </div>
      <div  class="flex-column flex-row" >
     <div class="margin-top-80">

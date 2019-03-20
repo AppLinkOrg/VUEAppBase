@@ -67,7 +67,7 @@
 
         <div class="flex-row flex-center padding-10" @click="push('/mybaby',true)">
           <img
-            :src="uploadpath+'resource/'+res.mybaby"
+            :src="uploadpath+'resource/'+res.heat_icon"
             class="icon-15 margin-left-10"
             style="border:1px solid white;border-radius:50%"
           >
