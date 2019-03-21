@@ -10,6 +10,7 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
+        "@ionic-native/background-mode": "^5.3.0",
         "better-scroll": "^0.1.15",
         "cordova-android": "^7.0.0",
         "cordova-plugin-background-mode": "^0.7.2",
