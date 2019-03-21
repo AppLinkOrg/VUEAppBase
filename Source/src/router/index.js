@@ -25,6 +25,7 @@ export default  [{
           component: include('home/home')
         },
         {
+
           path: '/childcarering',
           component: include('childcarering/childcarering')
         },
@@ -33,6 +34,7 @@ export default  [{
           component: include('Information/Information')
         },
         {
+
           path: '/mine',
           component: include('mine/mine')
         },
@@ -132,11 +134,6 @@ export default  [{
       path: '/historydata',
       name: 'historydata',
       component: include('historydata/historydata')
-    },
-    {
-      path: '/peoplecenter',
-      name: 'peoplecenter',
-      component: include('peoplecenter/peoplecenter')
     },
     {
       path: '/mybaby',

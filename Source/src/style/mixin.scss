@@ -134,8 +134,8 @@ $color-primary: #2699EC;
   background-color: $color-primary
 }
 .mint-switch-input:checked + .mint-switch-core {
-  border-color: #FF4081;
-  background-color: #FF4081;
+  border-color: $color-primary;
+  background-color: $color-primary;
 }
 .mint-navbar .mint-tab-item.is-selected {
   border-bottom: 3px solid $color-primary;
