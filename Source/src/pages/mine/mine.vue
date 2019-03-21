@@ -14,16 +14,19 @@
       <img :src="uploadpath+'resource/'+res.mine_bg" class style="width:100%;height:300px;">
       <div class="bg-gray" style="width:100%;"></div>
     </div>
-    <div style="z-index:1;position:fixed;width:100%"  >
+    <div style="z-index:1;position:fixed;width:100%">
       <div class="padding">
-        <div class="flex-row flex-column ">
-          <div class="height-30" ></div>
-          <img    @click="qwe"
+        <div class="flex-row flex-column">
+          <div class="height-30"></div>
+          <img
+            @click="qwe"
             :src="uploadpath+'member/'+(MemberInfo==null||MemberInfo.photo==''?InstInfo.memberlogo:MemberInfo.photo)"
             class="icon-30 bg-white"
             style="border:2px solid white;border-radius:50%"
           >
-          <div class="margin-top-20 txt-bold h7" >{{(MemberInfo==null||MemberInfo.name==''?"请登录":MemberInfo.name)}}</div>
+          <div
+            class="margin-top-20 txt-bold h7"
+          >{{(MemberInfo==null||MemberInfo.name==''?"请登录":MemberInfo.name)}}</div>
           <div class="height-40"></div>
         </div>
 
@@ -31,19 +34,19 @@
       </div>
 
       <div class="bg-white">
-        <!-- <div class="flex-row flex-center padding-10">
+        <div class="flex-row flex-center padding-10" @click="push('/peoplecenter')">
           <img
             :src="uploadpath+'resource/'+res.Personalcenter"
             class="icon-15 margin-left-10"
             style="border:1px solid white;border-radius:50%"
           >
-          
+
           <div class="margin-left-10 txt-bold">个人中心</div>
         </div>
-          
-        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div> -->
 
-        <div class="flex-row flex-center padding-10"  @click="push('/setting')">
+        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
+
+        <div class="flex-row flex-center padding-10" @click="push('/setting')">
           <img
             :src="uploadpath+'resource/'+res.setting"
             class="icon-15 margin-left-10"
@@ -54,7 +57,7 @@
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
 
-        <div class="flex-row flex-center padding-10" >
+        <div class="flex-row flex-center padding-10">
           <img
             :src="uploadpath+'resource/'+res.mylike"
             class="icon-15 margin-left-10"
@@ -74,6 +77,31 @@
 
           <div class="margin-left-10 txt-bold">我的宝贝</div>
         </div>
+
+        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
+
+        <div class="flex-row flex-center padding-10">
+          <img
+            :src="uploadpath+'resource/'+res.Using"
+            class="icon-15 margin-left-10"
+            style="border:1px solid white;border-radius:50%"
+          >
+          <div class="margin-left-10 txt-bold">使用声明</div>
+        </div>
+
+        <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
+
+        <div class="flex-row flex-center padding-10">
+
+          <img
+            :src="uploadpath+'resource/'+res.aboutus"
+            class="icon-15 margin-left-10"
+            style="border:1px solid white;border-radius:50%"
+          >
+
+          <div class="margin-left-10 txt-bold">关于我们</div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -87,12 +115,11 @@ class Content extends AppBase {
     super();
   }
 
-
-qwe(){
-if(this.MemberInfo==null){
-  this.push('/mobilelogin')
+  qwe() {
+    if (this.MemberInfo == null) {
+      this.push("/mobilelogin");
+    }
   }
-}
 }
 
 var content = new Content();

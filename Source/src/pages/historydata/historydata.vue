@@ -52,13 +52,14 @@
     </div>
 
     <div class="flex-row flex-center padding-top-5" style="border-bottom:1px solid gray">
+
       <div class="txt-bold flex-1 flex-row flex-column" @click="Urinedampness">
         <div>尿湿记录</div>
         <div style="width:100%;height:2px;" :class="{'bg':show==1}" class="margin-top-5"></div>
       </div>
 
-      <div class="txt-bold flex-1 flex-row flex-column" @click="Drop">
-        <div>跌落记录</div>
+      <div class="txt-bold flex-1 flex-row flex-column" @click="Drop();">
+        <div>尿量统计</div>
         <div style="width:100%;height:2px;" :class="{'bg':show==2}" class="margin-top-5"></div>
       </div>
 
@@ -67,13 +68,14 @@
         <div style="width:100%;height:2px;" :class="{'bg':show==3}" class="margin-top-5"></div>
       </div>
 
-      <div class="txt-bold flex-1 flex-row flex-column" @click="Urinevolume">
+      <!-- <div class="txt-bold flex-1 flex-row flex-column" @click="Urinevolume">
         <div>尿量统计</div>
         <div style="width:100%;height:2px;" :class="{'bg':show==4}" class="margin-top-5"></div>
-      </div>
+      </div> -->
+
     </div>
 
-    <div class v-if="show==1">
+    <div class v-show="show==1">
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -98,10 +100,10 @@
       </div>
     </div>
 
-    <div class v-if="show==2">
+    <div class v-show="show==2">
       
       <div class="flex-row flex-center">
-        <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
+        <div class="txt-bold txt-gray margin-left-10">日期范围</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近7日</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近14日</div>
@@ -109,14 +111,14 @@
       </div>
 
       <div class="margin-10 txt-bold">
-        <div id="dieluo" style="width:auto;height:250px;"></div>
+        <div id="niaoliang" style="width:auto;height:250px;"></div>
       </div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
       <div class="flex-row flex-center padding-left-20 padding-right-20 padding-top-20">
-        <div class="flex-1 text-center txt-gray txt-bold">发生跌落日期</div>
-        <div class="flex-1 text-center txt-gray txt-bold">发生跌落次数</div>
+        <div class="flex-1 text-center txt-gray txt-bold">日期</div>
+        <div class="flex-1 text-center txt-gray txt-bold">尿量</div>
       </div>
 
       <div class="flex-row flex-center padding-left-20 padding-right-20 margin-top-10" style>
@@ -130,22 +132,22 @@
       </div>
     </div>
 
-    <div class v-if="show==3">
+    <div class v-show="show==3">
       <div class="flex-row flex-center">
-        <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
+        <div class="txt-bold txt-gray margin-left-10">日期范围</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近7日</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近14日</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>近30日</div>
       </div>
 
-      <div class="height-100 margin-10 txt-bold">此处为图标...</div>
+      <div class="margin-10 txt-bold"><div id="yinpian" style="width:auto;height:250px;"></div></div>
 
       <div class="txt-bold padding-10 h7-5">数据详情</div>
 
       <div class="flex-row flex-center padding-left-20 padding-right-20 padding-top-20">
-        <div class="flex-1 text-center txt-gray txt-bold">发生跌落日期</div>
-        <div class="flex-1 text-center txt-gray txt-bold">发生跌落次数</div>
+        <div class="flex-1 text-center txt-gray txt-bold">日期</div>
+        <div class="flex-1 text-center txt-gray txt-bold">用片数</div>
       </div>
 
       <div class="flex-row flex-center padding-left-20 padding-right-20 margin-top-10" style>
@@ -159,7 +161,7 @@
       </div>
     </div>
 
-    <div class v-if="show==4">
+    <!-- <div class v-show="show==4">
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -186,7 +188,7 @@
         <div class="flex-1 text-center txt-gray txt-bold">2019-02-02</div>
         <div class="flex-1 text-center txt-bold">1</div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -238,17 +240,38 @@ class Content extends AppBase {
     }]
     });
     
-
-
- 
-
   }
  
 
-  Dieluo(){
-
-    var myCharts = this.$echarts.init(document.getElementById("dieluo"));
+  Niaoliang(){
+    var myCharts = this.$echarts.init(document.getElementById("niaoliang"));
     myCharts.setOption({
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ["0:00", "6:00", "12:00", "18:00"]
+    },
+    legend: {
+        data:['尿量统计']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        name: '尿量统计',
+        data: [0, 0, 0, 0, 0, 0, 0],
+        type: 'line',
+        areaStyle: {}
+    }]
+    });
+  }
+
+  Yonpian(){
+    var myCharts = this.$echarts.init(document.getElementById("yinpian"));
+    myCharts.setOption({
+    legend: {
+        data:['用片统计']
+    },
     xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -258,12 +281,12 @@ class Content extends AppBase {
         type: 'value'
     },
     series: [{
+        name: '用片统计',
         data: [0, 0, 0, 0, 0, 0, 0],
         type: 'line',
         areaStyle: {}
     }]
     });
-
   }
 
   onMyLoad(){
@@ -287,9 +310,15 @@ class Content extends AppBase {
 
   Drop() {
     this.show = 2;
+    this.$nextTick(()=>{
+        this.Niaoliang();
+    });
   }
   Usesheet() {
     this.show = 3;
+    this.$nextTick(()=>{
+        this.Yonpian();
+    });
   }
   Urinevolume() {
     this.show = 4;
@@ -302,11 +331,11 @@ body.methods.Urinedampness = content.Urinedampness;
 body.methods.Drop = content.Drop;
 body.methods.Usesheet = content.Usesheet;
 body.methods.Urinevolume = content.Urinevolume;
-body.methods.creatE = content.creatE;
+// body.methods.creatE = content.creatE;
 
 body.methods.init = content.init;
-body.methods.Dieluo = content.Dieluo;
-
+body.methods.Niaoliang = content.Niaoliang;
+body.methods.Yonpian = content.Yonpian;
 export default body;
 </script>
 
