@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class v-if="show==1">
+    <div class v-show="show==1">
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <div class v-if="show==2">
+    <div class v-show="show==2">
       
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
@@ -130,7 +130,7 @@
       </div>
     </div>
 
-    <div class v-if="show==3">
+    <div class v-show="show==3">
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -159,7 +159,7 @@
       </div>
     </div>
 
-    <div class v-if="show==4">
+    <div class v-show="show==4">
       <div class="flex-row flex-center">
         <div class="txt-bold txt-gray margin-left-10">尿湿记录</div>
         <div class="txt-bold txt-gray margin-10 xuanxiang" style>当日</div>
@@ -275,6 +275,7 @@ class Content extends AppBase {
   onMyShow() {
       console.log(2222222)
     this.init();
+    console.log(5555555);
     //this.Dieluo();
 
     // 使用刚指定的配置项和数据显示图表。

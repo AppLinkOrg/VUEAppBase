@@ -49,6 +49,9 @@
         <!-- <div @click="inputFun" class="flex-1 text-right margin-right-10 txt-bold">中文</div> -->
         <img :src="uploadpath+'resource/'+res.you"  class="icon-7_5">
     </div>
+     <div class="text-center margin-top-60" v-if="isLogin()">
+        <mt-button size="large" @click="logout()" type="primary">退出登录</mt-button>
+      </div>
 
            <mt-popup style="width:100vw" v-model="sexpopup" position="bottom">
             <mt-picker :slots="dateSlots" @change="Language" valueKey="label"></mt-picker>

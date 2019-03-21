@@ -12,7 +12,7 @@ export default  [{
   component: App,
   children: [{
       path: '',
-      redirect: '/ceshi'
+      redirect: '/home'
     },
     {
       path: '/tabs',

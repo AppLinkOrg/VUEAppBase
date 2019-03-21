@@ -54,13 +54,13 @@
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
 
-        <div class="flex-row flex-center padding-10" >
+        <div class="flex-row flex-center padding-10"  @click="push('/mylike')">
           <img
             :src="uploadpath+'resource/'+res.mylike"
             class="icon-15 margin-left-10"
             style="border:1px solid white;border-radius:50%"
           >
-          <div class="margin-left-10 txt-bold" @click="push('/mylike')">我的点赞</div>
+          <div class="margin-left-10 txt-bold" >我的点赞</div>
         </div>
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
@@ -76,6 +76,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
