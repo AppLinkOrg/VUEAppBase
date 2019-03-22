@@ -80,7 +80,7 @@
 
         <div class="bg-gray margin-left-20 margin-right-20" style="height:1px;width:90%;"></div>
 
-        <div class="flex-row flex-center padding-10">
+        <!-- <div class="flex-row flex-center padding-10">
           <img
             :src="uploadpath+'resource/'+res.Using"
             class="icon-15 margin-left-10"
@@ -101,7 +101,7 @@
 
           <div class="margin-left-10 txt-bold">关于我们</div>
 
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
