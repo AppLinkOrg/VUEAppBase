@@ -55,6 +55,7 @@ export class AppBase {
   static Resources = null;
   static InstInfo = null;
   Params={};
+  static BabyList=[{baby:{},aidevice:null}];
   Page = null;
   title = "aa";
   constructor(page) {
@@ -102,7 +103,10 @@ export class AppBase {
       this.post("member", "info", {}).then((memberinfo) => {
         if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
           memberinfo = null;
-        } else {}
+        } else {
+          
+        }
+
         this.MemberInfo = memberinfo;
         this.onMyShow();
       });
@@ -236,9 +240,9 @@ export class AppBase {
     MessageBox.alert(message);
   }
   confirm(message, callback) {
-    return MessageBox.confirm(message, "提示").then((action) => {
-      return action == "confirm";
-    });
+    return MessageBox.confirm(message, "提示").then(callback
+    
+    );
   }
   isLogin() {
     return this.MemberInfo != null;

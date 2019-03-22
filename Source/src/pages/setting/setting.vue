@@ -1,78 +1,106 @@
 
 <style>
-.border_bottom{
-    border-bottom: 1px solid #F2F2F2;
+.border_bottom {
+  border-bottom: 1px solid #f2f2f2;
+}
+.block{
+  background: #FF4081;
+  color: white;
 }
 </style>
 <template>
-  <div class="bg-white">
-      <div class="height-40">
+  <div class="" >
+    <div class="height-40">
       <mt-header style="background-color:#FF4081" title="我的设置" fixed>
         <router-link to="/mine" slot="left">
           <mt-button icon="back"></mt-button>
         </router-link>
       </mt-header>
+    </div>
+
+  <!--<div>
+       <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun" style>
+      <div class="txt-bold">语言选择：</div>
+      <div class="flex-1 text-right margin-right-10 txt-bold">中文</div>
+      <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
+    </div>
+    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun2" style>
+      <div class="txt-bold">舒适度提醒：</div>
+      <div class="flex-1 text-right margin-right-10 txt-bold">开</div>
+      <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
+    </div>
+    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun3" style>
+      <div class="txt-bold">舒适度调节：</div>
+      <div class="flex-1 text-right margin-right-10 txt-bold">平衡</div>
+      <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
+    </div>
+    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun4" style>
+      <div class="txt-bold">安全监控提醒：</div>
+      <div class="flex-1 text-right margin-right-10 txt-bold">打开</div>
+      <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
+    </div>
+    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun5" style>
+      <div class="txt-bold">翻身提醒：</div>
+      <div class="flex-1 text-right margin-right-10 txt-bold">1小时</div>
+      <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
+    </div>
+    <div class="padding-15 flex-row flex-center border_bottom" style>
+      <div class="txt-bold flex-1">使用声明：</div>
+     
+      <img :src="uploadpath+'resource/'+res.you" class="icon-7_5">
+    </div>-->
+    <!-- <mt-popup style="width:100vw" v-model="sexpopup" position="bottom">
+      <mt-picker :slots="dateSlots" @change="Language" valueKey="label"></mt-picker>
+    </mt-popup>
+    <mt-popup style="width:100vw" v-model="sexpopup2" position="bottom">
+      <mt-picker :slots="dateSlots2" @change="Comfortreminder" valueKey="label"></mt-picker>
+    </mt-popup>
+    <mt-popup style="width:100vw" v-model="sexpopup3" position="bottom">
+      <mt-picker :slots="dateSlots3" @change="Comfortregulation" valueKey="label"></mt-picker>
+    </mt-popup>
+    <mt-popup style="width:100vw" v-model="sexpopup4" position="bottom">
+      <mt-picker :slots="dateSlots4" @change="Monitoring" valueKey="label"></mt-picker>
+    </mt-popup>
+    <mt-popup style="width:100vw" v-model="sexpopup5" position="bottom">
+      <mt-picker :slots="dateSlots5" @change="Turnover" valueKey="label"></mt-picker>
+    </mt-popup> 
+    
+  </div>-->
+
+    <div class="flex-row flex-center padding-15 bg-white">
+      <div class="flex-1 txt-bold">尿湿提醒</div>
+      <div><mt-switch  @change="check" >关</mt-switch></div>
+    </div>
+
+    <div class="bg-gray" style="height:1px;width:100%;"></div>
+
+    <div class="flex-row flex-center padding-5 bg-gray">
+      
+      <div :class="{'block':block==1}" class=" margin-10 flex-1 padding-5 bg-white text-center radius-10 txt-bold" @click="ganshuang">
+       干爽
       </div>
 
-    <div class="padding-15 flex-row flex-center border_bottom " @click="inputFun" style="">
-        <div class="txt-bold">语言选择：</div>
-        <div  class="flex-1 text-right margin-right-10 txt-bold">中文</div>
-        <img :src="uploadpath+'resource/'+res.bottom_icon"  class="icon-7_5">
-    </div>
-
-    <div class="padding-15 flex-row flex-center border_bottom"  @click="inputFun2" style="">
-        <div class="txt-bold">舒适度提醒：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">开</div>
-        <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
-    </div>
-
-    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun3" style="">
-        <div class="txt-bold">舒适度调节：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">平衡</div>
-        <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
-    </div>
-
-    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun4" style="">
-        <div class="txt-bold">安全监控提醒：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">打开</div>
-        <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
-    </div>
-
-    <div class="padding-15 flex-row flex-center border_bottom" @click="inputFun5" style="">
-        <div class="txt-bold">翻身提醒：</div>
-        <div class="flex-1 text-right margin-right-10 txt-bold">1小时</div>
-        <img :src="uploadpath+'resource/'+res.bottom_icon" class="icon-7_5">
-    </div>
-
-    <div class="padding-15 flex-row flex-center border_bottom" style="">
-        <div class="txt-bold flex-1">使用声明：</div>
-        <!-- <div @click="inputFun" class="flex-1 text-right margin-right-10 txt-bold">中文</div> -->
-        <img :src="uploadpath+'resource/'+res.you"  class="icon-7_5">
-    </div>
-     <div class="text-center margin-top-60" v-if="isLogin()">
-        <mt-button size="large" @click="logout()" type="primary">退出登录</mt-button>
+      <div :class="{'block':block==2}" class=" margin-10 flex-1 padding-5 bg-white text-center radius-10 txt-bold" @click="shizhong">
+       适中
       </div>
 
-           <mt-popup style="width:100vw" v-model="sexpopup" position="bottom">
-            <mt-picker :slots="dateSlots" @change="Language" valueKey="label"></mt-picker>
-            </mt-popup>
+      <div :class="{'block':block==3}" class=" margin-10 flex-1 padding-5 bg-white text-center radius-10 txt-bold" @click="weichao">
+       微潮
+      </div>
 
-            <mt-popup style="width:100vw" v-model="sexpopup2" position="bottom">
-            <mt-picker :slots="dateSlots2" @change="Comfortreminder" valueKey="label"></mt-picker>
-            </mt-popup>
+      <div :class="{'block':block==4}" class=" margin-10 flex-1 padding-5 bg-white text-center radius-10 txt-bold" @click="chaoshi">
+       潮湿
+      </div>
 
-            <mt-popup style="width:100vw" v-model="sexpopup3" position="bottom">
-            <mt-picker :slots="dateSlots3" @change="Comfortregulation" valueKey="label"></mt-picker>
-            </mt-popup>
+    </div>
 
-            <mt-popup style="width:100vw" v-model="sexpopup4" position="bottom">
-            <mt-picker :slots="dateSlots4" @change="Monitoring" valueKey="label"></mt-picker>
-            </mt-popup>
+    <div class="bg-gray" style="height:1px;width:100%;"></div>
 
-            <mt-popup style="width:100vw" v-model="sexpopup5" position="bottom">
-            <mt-picker :slots="dateSlots5" @change="Turnover" valueKey="label"></mt-picker>
-            </mt-popup>
-
+    <div class="flex-row flex-center padding-15 bg-white">
+      <div class="flex-1 txt-bold">断开连接提醒</div>
+      <div><mt-switch  @change="check" >关</mt-switch></div>
+    </div>
+    <div class="bg-gray" style="height:1px;width:100%;"></div>
   </div>
 </template>
 
@@ -83,76 +111,41 @@ class Content extends AppBase {
   constructor() {
     super();
   }
-  setData(data) {
-    data.dateSlots = [];
-    data.dateSlots2 = [];
-    data.dateSlots3 = [];
-    data.dateSlots4 = [];
-    data.dateSlots5 = [];
-
-    data.sexpopup = false;
-    data.sexpopup2 = false;
-    data.sexpopup3 = false;
-    data.sexpopup4 = false;
-    data.sexpopup5 = false;
+  setData(data){
+    data.block=1;
     return data;
   }
-   inputFun() {
-    this.sexpopup = true;
+
+  check(){
+    console.log("ssss");
+    
   }
-     inputFun2() {
-    this.sexpopup2 = true;
-  }
-     inputFun3() {
-    this.sexpopup3 = true;
-  }
-     inputFun4() {
-    this.sexpopup4 = true;
-  }
-     inputFun5() {
-    this.sexpopup5 = true;
+  ganshuang(){
+    this.block=1
   }
 
-   Language(picker, values) {
-    this.dateSlots = [{ values: ["中文", "English"] }];
-    //document.getElementsByClassName("input")[0].value = values[0];
-  }
-    Comfortreminder(picker, values) {
-    this.dateSlots2 = [{ values: ["开", "关"] }];
-    //document.getElementsByClassName("input")[0].value = values[0];
-  }
-    Comfortregulation(picker, values) {
-    this.dateSlots3 = [{ values: ["最节约", "经济","平衡","舒适","最舒适"] }];
-    //document.getElementsByClassName("input")[0].value = values[0];
+  shizhong(){
+    this.block=2
   }
 
-     Monitoring(picker, values) {
-    this.dateSlots4 = [{ values: ["打开", "关闭"] }];
-    //document.getElementsByClassName("input")[0].value = values[0];
+  weichao(){
+    this.block=3
   }
 
-     Turnover(picker, values) {
-    this.dateSlots5 = [{ values: ["1小时", "2小时", "3小时", "不提醒"] }];
-    //document.getElementsByClassName("input")[0].value = values[0];
+  chaoshi(){
+    this.block=4
   }
-
-
 
 }
 
 var content = new Content();
 var body = content.generateBodyJson();
-body.methods.Language = content.Language;
-body.methods.Comfortreminder = content.Comfortreminder;
-body.methods.Comfortregulation = content.Comfortregulation;
-body.methods.Monitoring = content.Monitoring;
-body.methods.Turnover = content.Turnover;
+body.methods.check = content.check;
+body.methods.ganshuang = content.ganshuang;
+body.methods.shizhong = content.shizhong;
+body.methods.weichao = content.weichao;
+body.methods.chaoshi = content.chaoshi;
 
-body.methods.inputFun = content.inputFun;
-body.methods.inputFun2 = content.inputFun2;
-body.methods.inputFun3 = content.inputFun3;
-body.methods.inputFun4 = content.inputFun4;
-body.methods.inputFun5 = content.inputFun5;
 export default body;
 </script>
 

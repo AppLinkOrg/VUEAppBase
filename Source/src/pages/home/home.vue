@@ -30,7 +30,7 @@
 
     <img :src="uploadpath+'resource/'+res.membertopbg" class="pic">
 
-    <div class="padding-5 flex-row flex-center " >
+    <div class="padding-5 flex-row flex-center " @click="push('/mybaby')" >
       <img :src="uploadpath+'resource/'+res.mybaby" class="icon-15 ">
       <div class="txt-bold">
       我的宝贝
@@ -131,7 +131,7 @@
         <img :src="uploadpath+'resource/'+res.home_1" class="icon-50">
         <div class="margin-top-20 txt-bold">宝宝好给力会自己换尿布了</div>
 <div class="height-30"></div>
-        <mt-button  class='h8' @click="push('/realtimedata')" style="width:50%;height:30px" type="primary">查看宝宝实时情况</mt-button>
+        <mt-button  class='h8' @click="chakan" style="width:50%;height:30px" type="primary">查看宝宝实时情况</mt-button>
     </div>
 
   </div>
@@ -184,9 +184,19 @@ class Content extends AppBase {
  
     return data;
   }
+ chakan(){
+   console.log(this.mybaby[0]);
+     if(this.mybaby[0].baby_equipment==''||this.mybaby[0].baby_equipment==undefined)
+     {
+       this.info("请绑定设备");
+     }
+     else{
+   this.pushParam("realtimedata",{id:this.mybaby[0].baby_equipment});}
+ }
   onMyLoad(){
 
   }
+  
   onMyShow(){
 this.post("news", "thisbaby",  { member_id:this.MemberInfo.id }).then(ret => {
   
@@ -206,7 +216,7 @@ this.mybaby=ret;
 
 var content = new Content();
 var body = content.generateBodyJson();
-// body.methods.getPhoto=content.getPhoto;
+ body.methods.chakan=content.chakan;
 // body.methods.takeP=content.takeP;
 // body.methods.upload=content.upload;
 

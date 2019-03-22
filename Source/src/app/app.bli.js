@@ -844,22 +844,23 @@ export class AIDevice {
         //},20000);
     }
     sendNot(id, content, sound) {
-        if (AppBase.IsIos) {
-            this.localNotifications.schedule({
-                id: id,
-                text: content,
-                vibrate: true,
-                sound: "file://assets/ring/" + sound + ".mp3"
-            });
-        } else {
-            //alert("file://assets/ring/"+sound+".mp3");
+        // if (AppBase.IsIos) {
+        //     this.localNotifications.schedule({
+        //         id: id,
+        //         text: content,
+        //         vibrate: true,
+        //         sound: "file://assets/ring/" + sound + ".mp3"
+        //     });
+        // } else {
+        //     //alert("file://assets/ring/"+sound+".mp3");
 
-            this.nativeAudio.play(sound);
-            this.localNotifications.schedule({
-                id: id,
-                text: content,
-                vibrate: true
-            });
-        }
+        //     this.nativeAudio.play(sound);
+        //     this.localNotifications.schedule({
+        //         id: id,
+        //         text: content,
+        //         vibrate: true
+        //     });
+        // }
+        alert(content);
     }
 }

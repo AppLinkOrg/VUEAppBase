@@ -78,13 +78,15 @@ class Content extends AppBase {
     data.aidevice = new AIDevice();
     data.count = 0;
     data.uuid = [];
-    data.selectdeviceid = "LNT05124";
+    data.selectdeviceid = "";
     //  data.localNotifications=localNotifications;
     return data;
   }
    onMyShow() {
+   
+    this.selectdeviceid=this.$route.params.id;
+  
     
-
     var that = this;
     this.aidevice.startTime();
     this.aidevice.setNotification(this.localNotifications);
