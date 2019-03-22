@@ -40,6 +40,7 @@ import {
   Field,
   Badge
 } from 'mint-ui';
+import { AppLang } from "./app.lang";
 
 export class AppBase {
 
@@ -81,6 +82,7 @@ export class AppBase {
     } else {
       this.InstInfo = AppBase.InstInfo;
     }
+    AppLang.getLang("cn");
 
     if (1==1||AppBase.Resources == null) {
       this.post("inst", "resources", {}).then((resources) => {
@@ -244,6 +246,8 @@ export class AppBase {
   logout(){
     this.MemberInfo=null;
     window.localStorage.removeItem("UserToken");
+
+    this.back();
   }
   push(url, needlogin = false) {
     if (needlogin == false) {

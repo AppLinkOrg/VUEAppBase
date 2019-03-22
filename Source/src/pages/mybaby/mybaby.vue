@@ -34,15 +34,8 @@ body {
       </div>
 
       <div class="flex-row flex-center margin-top-10" @click="pushParam('Bluetooth')" >
-        <div class="flex-row flex-center"> 
-          <img :src="uploadpath+'resource/'+res.bandin" class="icon-15 radius-50">
+        <div > <img :src="uploadpath+'resource/'+res.bandin" class="icon-15 radius-50"></div>
          <div class="flex-1 txt-bold margin-left-10 txt-gray">绑定设备</div>
-         </div>
-
-         <div class="flex-1 txt-bold text-center margin-left-10 txt-gray">选择纸尿裤</div>
-         
-         <div class="flex-1 txt-bold text-center margin-left-10 txt-gray" @click="pushParam('setting')">设置</div>
-
       </div>
 
 
