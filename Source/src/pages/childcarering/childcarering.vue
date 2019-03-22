@@ -135,17 +135,18 @@ class Content extends AppBase {
     data.momentlist = "";
     return data;
   }
+  
   onMyLoad() {
     this.mntlist();
   }
-
+  
   mntlist() {
-    this.post("moments", "momentlist", {}).then(ret => {
+    this.post("news", "momentlist", {}).then(ret => {
       this.momentlist = ret;
     });
   }
-
-
+  
+  
 
 }
 
