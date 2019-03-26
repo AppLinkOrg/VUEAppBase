@@ -129,23 +129,27 @@ bangdin(e)
 
 saomiao(){
    ble.isEnabled(() => {
-
+  console.log(1);
     }, () => {
       ble.enable().then(() => {
         this.onMyShow();
+         console.log(2);
       });
     });
 
     if (AppBase.IsMobileWeb) {
-
+   console.log(3);
       this.myslider.stopAutoplay();
       this.devicelist.push({ name: "test", id: "test:test:test:test", advertising: {}, riis: 100, data: "~~~" });
       this.myslider.slideNext();
 
     } else {
+         console.log(4);
       if (ble.isEnabled) {
+        console.log(5);
         this.tryScan();
       } else {
+        console.log(6);
         var that = this;
         ble.enable(() => {
           that.tryScan();
@@ -154,6 +158,7 @@ saomiao(){
     }
 
     try {
+      console.log(7);
       AppBase.Storage.get("selectdeviceid").then((id) => {
         this.selectdeviceid = id;
       });
@@ -162,38 +167,48 @@ saomiao(){
     }
 }
  tryScan() {
+   console.log(8);
     ble.startScanWithOptions([], { reportDuplicates: false },(device) => {
       var isclick = false;
+      console.log(device);
       if (device.name == undefined) {
+        console.log(9);
         return;
       }
       if (device.advertising.kCBAdvDataManufacturerData != undefined) {
+        console.log(10);
         var adv = [];
         var int32View = new Uint8Array(device.advertising.kCBAdvDataManufacturerData);
         for (var i = 0; i < int32View.length; i++) {
           adv.push(int32View[i].toString());
+        
         }
         device.advertising = "2,1,6,17,-1," + adv.join(",") + ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
         //alert(device.name);
         //alert(device.advertising);
       }
+      console.log(11);
       if (device.advertising != undefined&&typeof(device.advertising) == 'string') {
-
+console.log(12);
         var scanRecord = device.advertising.split(",");
         var Version = AIDevice.GetVersion(scanRecord);
         var mlength = AIDevice.GetwholeDatelength(Version);
         //alert(scanRecord.length+"<"+mlength);
         if (scanRecord.length < mlength) {
+          console.log(13);
           return;
         }
         var mData = [];
         if (Version == 0) {
+          console.log(14);
           mData = Array(7);
         }
         else if (Version == 1) {
+           console.log(15);
           mData = Array(7);
         }
         else if (Version == 2) {
+           console.log(16);
           mData = Array(8);
         }
         //						mTimeOutHandler.removeCallbacks(mThreadTimeOut);
@@ -204,6 +219,7 @@ saomiao(){
         }
         device.uuid=device.id;
         device.id = AIDevice.GetID(scanRecord);
+        console.log(17);
         //alert(mdataPosition);
         if (mData[0] == 0x00 || mData[14] == 0x00) {
         } else {
@@ -213,10 +229,12 @@ saomiao(){
 
       //alert("a"+device.name+"b"+isclick);
       device.TYPE = AIDevice.GetType(scanRecord);
-
+console.log(18);
+console.log(device);
       if (device.name != undefined && (device.TYPE == "LNT" || device.TYPE == "CHA")
         && isclick == true) {
         if (AppBase.research == false && device.id == this.selectdeviceid) {
+          console.log(19);
           this.selectDevice(device);
         }
         device.data = JSON.stringify(device);
@@ -245,7 +263,7 @@ console.log( this.devicelist);
       }
 
     }, (error) => {
-      //alert(error);
+      alert(error);
     }, () => {
     });
   }

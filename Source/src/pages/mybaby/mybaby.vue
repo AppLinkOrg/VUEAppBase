@@ -9,7 +9,7 @@ body {
    
     <div class="height-40">
       <mt-header title="我的宝贝" style="background-color:#FF4081" fixed>
-        <router-link to="/mine" slot="left">
+        <router-link to="/" slot="left">
           <mt-button icon="back"></mt-button>
         </router-link>
       </mt-header>
@@ -92,7 +92,7 @@ this.post("news", "selectbaby", { member_id:this.MemberInfo.id }).then(ret => {
 }
 qiehuan(e){
   
-this.post("news", "thisbaby", { id:this.MemberInfo.id }).then(ret => {
+this.post("news", "thisbaby", { member_id:this.MemberInfo.id }).then(ret => {
     
     if(ret=='')
     {
