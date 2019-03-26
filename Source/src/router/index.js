@@ -139,6 +139,11 @@ export default  [{
       component: include('peoplecenter/peoplecenter')
     },
     {
+      path: '/diapermodel',
+      name: 'diapermodel',
+      component: include('diapermodel/diapermodel')
+    },
+    {
       path: '/mybaby',
       name: 'mybaby',
       component: include('mybaby/mybaby')
