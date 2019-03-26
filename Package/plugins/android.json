@@ -30,7 +30,7 @@
     "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-ble-central": {
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },

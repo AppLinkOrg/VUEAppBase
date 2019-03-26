@@ -40,6 +40,7 @@ import {
   Field,
   Badge
 } from 'mint-ui';
+import { AppLang } from "./app.lang";
 
 export class AppBase {
 
@@ -54,6 +55,7 @@ export class AppBase {
   static Resources = null;
   static InstInfo = null;
   Params={};
+  static BabyList=[{baby:{},aidevice:null}];
   Page = null;
   title = "aa";
   constructor(page) {
@@ -81,6 +83,7 @@ export class AppBase {
     } else {
       this.InstInfo = AppBase.InstInfo;
     }
+    AppLang.getLang("cn");
 
     if (1==1||AppBase.Resources == null) {
       this.post("inst", "resources", {}).then((resources) => {
@@ -100,7 +103,10 @@ export class AppBase {
       this.post("member", "info", {}).then((memberinfo) => {
         if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
           memberinfo = null;
-        } else {}
+        } else {
+          
+        }
+
         this.MemberInfo = memberinfo;
         this.onMyShow();
       });
@@ -234,9 +240,9 @@ export class AppBase {
     MessageBox.alert(message);
   }
   confirm(message, callback) {
-    return MessageBox.confirm(message, "提示").then((action) => {
-      return action == "confirm";
-    });
+    return MessageBox.confirm(message, "提示").then(callback
+    
+    );
   }
   isLogin() {
     return this.MemberInfo != null;
@@ -244,6 +250,8 @@ export class AppBase {
   logout(){
     this.MemberInfo=null;
     window.localStorage.removeItem("UserToken");
+
+    this.back();
   }
   push(url, needlogin = false) {
     if (needlogin == false) {
