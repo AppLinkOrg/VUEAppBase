@@ -122,7 +122,7 @@ class Content extends AppBase {
         if(ret.code==0){
           this.store("UserToken", ret.return);
           this.toast("登录成功");
-          this.back(-2);
+          this.back();
         }else{
           this.pushParam("wxauthlogin",ret.return);
         }

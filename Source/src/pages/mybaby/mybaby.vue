@@ -39,7 +39,7 @@ body {
          <div class="flex-1 txt-bold margin-left-10 txt-gray" @click="pushParam('Bluetooth',{id:item.id})">{{item.equipment!=''?item.equipment:'绑定设备'}}</div>
          </div>
 
-         <div class="flex-1 txt-bold text-center margin-left-10 txt-gray">选择纸尿裤</div>
+         <div class="flex-1 txt-bold text-center margin-left-10 txt-gray" @click="pushParam('diapermodel',{id:item.id})">{{item.diapermodel_name!=''?item.diapermodel_name:'选择纸尿裤'}}</div>
          
          <div class="flex-1 txt-bold text-center margin-left-10 txt-gray" @click="pushParam('setting')">设置</div>
 
@@ -76,6 +76,8 @@ onMyLoad(){
 onMyShow(){
   
 this.post("news", "selectbaby", { member_id:this.MemberInfo.id }).then(ret => {
+  console.log(11111);
+  console.log(ret);
     this.mybaby=ret;
     
     });
