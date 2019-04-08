@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="share" @click="push('/share')">
+    <div class="share" @click="push('/share',true)">
       <img :src="uploadpath+'resource/'+res.fabu" class="icon-20 bg-gray" style="border-radius:50%">
     </div>
 

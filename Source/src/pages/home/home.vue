@@ -153,12 +153,20 @@ class Content extends AppBase {
   chakan() {
     console.log(this.mybaby[0]);
     if (
-      this.mybaby[0].baby_equipment == "" ||
-      this.mybaby[0].baby_equipment == undefined
+      this.mybaby[0] == "" ||
+      this.mybaby[0] == undefined
     ) {
-      this.info("请绑定设备");
+      this.info("请选择宝贝");
     } else {
-      this.pushParam("realtimedata", { id: this.mybaby[0].baby_equipment });
+      this.mybaby[0] == undefined
+       if(this.mybaby[0].baby_equipment ==''||this.mybaby[0].baby_equipment =='')
+       {
+this.info("请绑定设备");
+
+       }
+       else{this.pushParam("realtimedata", { id: this.mybaby[0].baby_equipment,xh:this.mybaby[0].nbxh});}
+
+      
     }
   }
   onMyLoad() {}

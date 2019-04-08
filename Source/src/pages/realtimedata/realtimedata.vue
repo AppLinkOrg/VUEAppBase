@@ -9,7 +9,13 @@
 .rtd {
   position: fixed;
   z-index: 1;
-  bottom: 20%;
+  bottom: 15%;
+  width: 100%;
+}
+.rtd1 {
+  position: fixed;
+  z-index: 2;
+  bottom: 40%;
   width: 100%;
 }
 .url {
@@ -28,8 +34,18 @@
       </mt-header>
     </div>
 
-    <img :src="uploadpath+'resource/'+res.realtimedate" class="data_bg">
+    <img v-show="aidevice.shushidu==0" :src="uploadpath+'resource/'+res.realtimedate" class="data_bg">
+    <img  v-show="aidevice.shushidu>0&&aidevice.shushidu<25" :src="uploadpath+'resource/'+res.bg1" class="data_bg">
+    <img v-show="aidevice.shushidu>=25&&aidevice.shushidu<50" :src="uploadpath+'resource/'+res.bg2" class="data_bg">
+    <img  v-show="aidevice.shushidu>=50&&aidevice.shushidu<75" :src="uploadpath+'resource/'+res.bg3" class="data_bg">
+    <img v-show="aidevice.shushidu>=75" :src="uploadpath+'resource/'+res.bg4" class="data_bg">
 
+
+  <div class="flex-row column rtd1 text-center txt-white txt-bold h3">
+
+{{aidevice.shushidu}}%
+
+  </div>
     <div class="flex-row column rtd padding">
       <div class="flex-row flex-center flex-1 margin-left-40" style>
         <div class="flex-row flex-center flex-1">
@@ -46,7 +62,7 @@
       <div class="flex-row flex-center flex-1 margin-left-40 margin-top-10" style>
         <div class="flex-row flex-center flex-1">
           <img :src="uploadpath+'resource/'+res.star_gray" class="icon-10">
-          <div class="txt-white txt-bold margin-left-5 h7-5">湿度：{{aidevice.shushidu}}%</div>
+          <div class="txt-white txt-bold margin-left-5 h7-5">码数：{{xinhao}}码 </div>
         </div>
 
         <div class="flex-row flex-center flex-1">
@@ -78,12 +94,13 @@ class Content extends AppBase {
     data.aidevice = new AIDevice();
     data.count = 0;
     data.uuid = [];
+    data.xinhao="";
     data.selectdeviceid = "";
     //  data.localNotifications=localNotifications;
     return data;
   }
    onMyShow() {
-   
+   this.xinhao=this.$route.params.xh;
     this.selectdeviceid=this.$route.params.id;
   
     
