@@ -23,7 +23,7 @@
     </div>
     
 
-    <div class="margin-10">
+    <div class="margin-10" @click="pushParam('infminfo')" >
       <div class="margin-top-20 buhuanhan">{{wenzi.name}}</div>
       <div class="flex-row flex-center" style="border-bottom:1px solid #DDDDDD;padding-bottom:10px">
         <img
