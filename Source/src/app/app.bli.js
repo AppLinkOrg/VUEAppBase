@@ -9,6 +9,7 @@ import { AppLang } from "./app.lang";
 export class AIDevice {
 
     mapObj = null;
+    ble=null;
 
     ftime = [];
 
@@ -90,6 +91,121 @@ export class AIDevice {
 
 
     }
+
+    stopscan(){
+        try {
+            ble.stopScan();
+          } catch (e) {}
+    }
+
+    startmonitor(ble,eqid){
+        this.ble=ble;
+        this.startTime();
+        //this.setNotification();
+        //this.setNativeAudio();
+
+
+        if (AppBase.IsMobileWeb) {
+            // this.reloaddata(
+            //   this.mockdevice.id,
+            //   this.mockdevice.advertising,
+            //   0
+            // );
+            //alert(this.aidevice.Version);
+          } else {
+            try {
+              ble.stopScan();
+            } catch (e) {}
+      
+            ble.startScanWithOptions(
+              [],
+              { reportDuplicates: true },
+              device => {
+      
+                
+                //alert(JSON.stringify(device));
+                //if(this.selectdeviceid!=)
+                if (device.name == undefined) {
+                    console.log(1);
+                  return;
+                }
+                console.log(device);
+               
+                device.uuid = [];
+                if (device.advertising.kCBAdvDataManufacturerData != undefined) {
+                  var adv = [];
+                  device.uuid = device.advertising.kCBAdvDataServiceUUIDs;
+                  var int32View = new Uint8Array(
+                    device.advertising.kCBAdvDataManufacturerData
+                  );
+                  for (var i = 0; i < int32View.length; i++) {
+                    adv.push(int32View[i].toString());
+                  }
+                  device.advertising =
+                    "2,1,6,17,-1," +
+                    adv.join(",") +
+                    ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+                  //alert(device.name);
+                  //alert(device.advertising);
+                }
+                //alert(JSON.stringify(device));
+                if (
+                  device.advertising == undefined &&
+                  typeof device.advertising != "string"
+                ) {
+                    console.log(2);
+                  return;
+                }
+                //alert(JSON.stringify(device));
+      
+                var scanRecord = device.advertising.split(",");
+                var Version = AIDevice.GetVersion(scanRecord);
+                var mlength = AIDevice.GetwholeDatelength(Version);
+                //alert(scanRecord.length+"<"+mlength);
+                if (scanRecord.length < mlength) {
+                  return;
+                }
+                var mData = [];
+                if (Version == 0) {
+                  mData = Array(7);
+                } else if (Version == 1) {
+                  mData = Array(7);
+                } else if (Version == 2) {
+                  mData = Array(8);
+                }
+                //						mTimeOutHandler.removeCallbacks(mThreadTimeOut);
+                //						runOnUiThread(capEnter);
+                var mdataPosition = AIDevice.GetDataPosition(Version);
+                for (var i = mdataPosition; i < mData.length + mdataPosition; i++) {
+                  mData[i - mdataPosition] = scanRecord[i];
+                }
+                device.id = AIDevice.GetID(scanRecord);
+                device.TYPE = AIDevice.GetType(scanRecord);
+      
+                if (
+                  device.name != undefined &&
+                  (device.TYPE == "LNT" || device.TYPE == "CHA") &&( eqid == device.id) 
+                ) {
+                  if (device.advertising != undefined) {
+                    //alert(this.device.advertising);
+                    this.reloaddata(
+                      device.id,
+                      device.advertising,
+                      parseInt(device.rssi)
+                    );
+                    //alert(this.aidevice.Version);
+                  }
+                  //2.73.0
+                }
+              },
+              error => {
+                //alert(error);
+              }
+            ); //.subscribe(
+          }
+    }
+
+
     gostart = false;
     startTime() {
         if (this.gostart == true) {
@@ -779,6 +895,7 @@ export class AIDevice {
     }
     t = 0;
     notify(type, content) {
+        alert(content);
         if ("N" != "Y") {
             return;
         }

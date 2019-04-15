@@ -41,6 +41,7 @@ import {
   Badge
 } from 'mint-ui';
 import { AppLang } from "./app.lang";
+import { AIDevice } from "./app.bli";
 
 export class AppBase {
 
@@ -54,6 +55,7 @@ export class AppBase {
   static Setting={alert:"Y",sound:"Y",shushi:"1",mashu:"1",fanshen:"1",lang:"cn",lost:"0"};
   static Resources = null;
   static InstInfo = null;
+  static AIDiapers=[];
   Params={};
   static BabyList=[{baby:{},aidevice:null}];
   Page = null;
@@ -108,16 +110,28 @@ export class AppBase {
         }
 
         this.MemberInfo = memberinfo;
+        this.loadAIDipaer();
         this.onMyShow();
       });
     }
-
-
-
   }
 
   onMyShow() {
     console.log("onMyShow");
+  }
+
+  loadAIDipaer(){
+    var ais=AppBase.AIDiapers;
+    if(this.MemberInfo!=null){
+      for(var i=0;i<this.MemberInfo.babys.length;i++){
+        if(ais[this.MemberInfo.babys[i].id]==undefined){
+          var aidevice=new AIDevice();
+          aidevice.startmonitor(ble,this.MemberInfo.babys[i].equipment);
+          ais[this.MemberInfo.babys[i].id]=aidevice;
+        }
+      }
+    }
+    
   }
 
   post(model, func, params) {
@@ -174,6 +188,7 @@ export class AppBase {
         onMyShow: base.onMyShow,
         onBaseLoad: base.onBaseLoad,
         onBaseShow: base.onBaseShow,
+        loadAIDiaper: base.loadAIDipaer,
         toast: base.toast,
         info: base.info,
         confirm: base.confirm,

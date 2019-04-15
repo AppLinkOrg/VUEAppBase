@@ -54,11 +54,6 @@ export default  [{
       component: include('infminfo/infminfo'),
     },
     {
-      path: '/mobilelogin',
-      name: 'mobilelogin',
-      component: include('mobilelogin/mobilelogin'),
-    },
-    {
       path: '/momentdetails',
       name: 'momentdetails',
       component: include('momentdetails/momentdetails'),
