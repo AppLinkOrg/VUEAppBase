@@ -174,23 +174,18 @@ document.addEventListener('deviceready', function() {
 //     router
 //   })
 
-// // document.addEventListener('deviceready', function() {
-// //   //   window.open = cordova.InAppBrowser.open
-// //   window.Wechat=Wechat;
-// //   new Vue({
-// //     router
-// //   }).$mount('#app')
-// //   //  navigator.splashscreen.hide()
-// // }, false)
+document.addEventListener('deviceready', function() {
+  //   window.open = cordova.InAppBrowser.open
+  window.Wechat=Wechat;
+  window.ble=ble;
+  new Vue({
+    router
+  }).$mount('#app')
+  //  navigator.splashscreen.hide()
+}, false);
 
-if(/Win/i.test(navigator.platform))
-{
- window.Wechat=undefined;
-   new Vue({
-     router
-  }).$mount('#app');
-}
-else{
-  
-}
+// window.Wechat=undefined;
+// new Vue({
+//   router
+// }).$mount('#app');
 

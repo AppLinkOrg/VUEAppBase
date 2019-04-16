@@ -121,6 +121,7 @@ export class AppBase {
   }
 
   loadAIDipaer(){
+    var ble=window.ble;
     if(ble==undefined){
       return;
     }
