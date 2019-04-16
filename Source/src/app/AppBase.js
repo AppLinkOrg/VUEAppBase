@@ -188,7 +188,7 @@ export class AppBase {
         onMyShow: base.onMyShow,
         onBaseLoad: base.onBaseLoad,
         onBaseShow: base.onBaseShow,
-        loadAIDiaper: base.loadAIDipaer,
+        loadAIDipaer: base.loadAIDipaer,
         toast: base.toast,
         info: base.info,
         confirm: base.confirm,
