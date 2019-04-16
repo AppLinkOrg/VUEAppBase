@@ -121,6 +121,9 @@ export class AppBase {
   }
 
   loadAIDipaer(){
+    if(ble==undefined){
+      return;
+    }
     var ais=AppBase.AIDiapers;
     if(this.MemberInfo!=null){
       for(var i=0;i<this.MemberInfo.babys.length;i++){
