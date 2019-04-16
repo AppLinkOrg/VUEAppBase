@@ -164,7 +164,7 @@ class Content extends AppBase {
 this.info("请绑定设备");
 
        }
-       else{this.pushParam("realtimedata", { id: this.mybaby[0].baby_equipment,xh:this.mybaby[0].nbxh});}
+       else{this.pushParam("realtimedata", { id: this.mybaby[0].id,xh:this.mybaby[0].nbxh});}
 
       
     }

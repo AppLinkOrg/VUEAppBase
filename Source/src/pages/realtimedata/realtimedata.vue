@@ -102,26 +102,11 @@ class Content extends AppBase {
    onMyShow() {
    this.xinhao=this.$route.params.xh;
     this.selectdeviceid=this.$route.params.id;
-  
+    
+
     
     var that = this;
-    this.aidevice.startTime();
-    this.aidevice.setNotification(this.localNotifications);
-    this.aidevice.setNativeAudio(this.nativeAudio);
-    if (this.selectdeviceid == "" &&  AppBase.IsAndroid) {
-      //
-      this.modal("ScanPage", {}, selectdevice => {
-       this.selectdeviceid = selectdevice.id;
-        
-        this.tryScan();
-      });
-    } else {
-      this.tryScan();
-    }
-
-    try {
-    
-    } catch (ex) {}
+    this.aidevice=AppBase.AIDiapers[this.selectdeviceid];
 
    
   }
