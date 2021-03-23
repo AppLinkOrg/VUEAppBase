@@ -185,6 +185,7 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 // window.Wechat=undefined;
+// window.ble=undefined;
 // new Vue({
 //   router
 // }).$mount('#app');

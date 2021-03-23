@@ -121,20 +121,20 @@ export class AppBase {
   }
 
   loadAIDipaer(){
-    var ble=window.ble;
-    if(ble==undefined){
-      return;
-    }
-    var ais=AppBase.AIDiapers;
-    if(this.MemberInfo!=null){
-      for(var i=0;i<this.MemberInfo.babys.length;i++){
-        if(ais[this.MemberInfo.babys[i].id]==undefined){
-          var aidevice=new AIDevice();
-          aidevice.startmonitor(ble,this.MemberInfo.babys[i].equipment);
-          ais[this.MemberInfo.babys[i].id]=aidevice;
-        }
-      }
-    }
+    // var ble=window.ble;
+    // if(ble==undefined){
+    //   return;
+    // }
+    // var ais=AppBase.AIDiapers;
+    // if(this.MemberInfo!=null){
+    //   for(var i=0;i<this.MemberInfo.babys.length;i++){
+    //     if(ais[this.MemberInfo.babys[i].id]==undefined){
+    //       var aidevice=new AIDevice();
+    //       aidevice.startmonitor(ble,this.MemberInfo.babys[i].equipment);
+    //       ais[this.MemberInfo.babys[i].id]=aidevice;
+    //     }
+    //   }
+    // }
     
   }
 
