@@ -20,7 +20,7 @@
     "fastclick": "^1.0.6",
     "mint-ui": "^2.2.13",
     "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "querystring": "^0.2.0",
     "rxjs": "^6.4.0",
     "sass-loader": "^7.1.0",
